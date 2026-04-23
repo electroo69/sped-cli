@@ -129,7 +129,7 @@ footer a{color:var(--green)}
 
 <!-- HERO -->
 <section class="hero">
-  <div class="badge"><span class="dot"></span> v0.1.0 · 242 commands</div>
+  <div class="badge"><span class="dot"></span> v1.0.0 · 242 commands</div>
   <h1><span class="accent">sped</span>-cli</h1>
   <p class="tagline">242 token-efficient shell aliases for AI coding agents and developers. One install. Every command works standalone.</p>
   <div class="hero-cta">
@@ -179,7 +179,7 @@ footer a{color:var(--green)}
 <!-- AGENTS -->
 <section class="agents">
   <h2>Built for <span class="accent">every AI agent</span></h2>
-  <p class="sub">Ships with ready-to-use skill files. Copy into your project and your AI agent instantly learns all 242 commands.</p>
+  <p class="sub">Ships with ready-to-use skill files. One command sets up everything: <code style="color:var(--green)">sped setup --all</code></p>
   <div class="agent-grid">
     <div class="agent-card"><span class="icon">🧠</span><span class="name">Claude Code</span><span class="file">CLAUDE.md</span></div>
     <div class="agent-card"><span class="icon">🤖</span><span class="name">OpenAI Codex</span><span class="file">AGENTS.md</span></div>
@@ -193,14 +193,15 @@ footer a{color:var(--green)}
 <!-- INSTALL -->
 <section class="install" id="install">
   <h2>Get started in<br><span style="color:var(--green)">one command</span></h2>
-  <div class="install-box" onclick="navigator.clipboard.writeText('npm install -g sped-cli');this.querySelector('.copy').textContent='Copied!'">
-    <span class="dollar">$</span> npm install -g sped-cli
+  <div class="install-box" onclick="navigator.clipboard.writeText('npm i -g @electrooo69/sped-cli && sped setup --all');this.querySelector('.copy').textContent='Copied!'" style="margin-bottom:16px">
+    <span class="dollar">$</span> npm i -g @electrooo69/sped-cli && sped setup --all
     <span class="copy">📋 click to copy</span>
   </div>
+  <p style="color:var(--text-dim);font-size:.85rem;margin-top:8px">Installs 242 aliases globally + sets up AI agent skill files in your project</p>
 </section>
 
 <footer>
-  <p>MIT © 2026 <a href="https://github.com/electroo69" target="_blank">electroo69</a> · <a href="https://github.com/electroo69/sped-cli" target="_blank">GitHub</a> · <a href="https://www.npmjs.com/package/sped-cli" target="_blank">npm</a></p>
+  <p>MIT © 2026 <a href="https://github.com/electroo69" target="_blank">electroo69</a> · <a href="https://github.com/electroo69/sped-cli" target="_blank">GitHub</a> · <a href="https://www.npmjs.com/package/@electrooo69/sped-cli" target="_blank">npm</a></p>
 </footer>
 
 <script>

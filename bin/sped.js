@@ -6,6 +6,12 @@ const { run } = require("../src/dispatcher");
 
 const commandName = path.basename(process.argv[1], path.extname(process.argv[1]));
 
+// Handle `sped setup` subcommand
+if (process.argv[2] === "setup") {
+  require("./setup");
+  return;
+}
+
 run(process.argv.slice(2), { commandName }).then((code) => {
   process.exitCode = typeof code === "number" ? code : 0;
 }).catch((error) => {

@@ -2,7 +2,7 @@
 
 > **242 token-efficient shell aliases for AI coding agents and developers.** One install, every command works standalone — no prefix needed.
 
-[![npm version](https://img.shields.io/npm/v/sped-cli)](https://www.npmjs.com/package/sped-cli)
+[![npm version](https://img.shields.io/npm/v/@electrooo69/sped-cli)](https://www.npmjs.com/package/@electrooo69/sped-cli)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org)
 
@@ -26,6 +26,7 @@ Instead of `grep -rn TODO .`, it's `todo`.
 | Agents hallucinate wrong flags/syntax | Built-in commands with correct semantics |
 | Different projects use different package managers | Auto-detects npm/yarn/pnpm/bun |
 | Shell aliases don't survive across machines | One `npm install -g` and everything works |
+| Setting up agent instructions is tedious | `sped setup` auto-installs skill files |
 | PowerShell conflicts with short aliases | Automatic profile patching on Windows |
 
 ---
@@ -35,7 +36,7 @@ Instead of `grep -rn TODO .`, it's `todo`.
 ### Install
 
 ```bash
-npm install -g sped-cli
+npm install -g @electrooo69/sped-cli
 ```
 
 ### Use
@@ -429,14 +430,20 @@ sped-cli ships with **ready-to-use instruction files** for every major AI coding
 
 These files teach each agent to prefer sped-cli's short aliases over long shell commands, saving tokens and reducing errors.
 
-### Quick setup for all agents
+### One-command setup for all agents
 
 ```bash
-# Copy the instruction files you need from the skills/ directory:
-cp node_modules/sped-cli/skills/CLAUDE.md ./CLAUDE.md
-cp node_modules/sped-cli/skills/AGENTS.md ./AGENTS.md
-cp node_modules/sped-cli/skills/GEMINI.md ./GEMINI.md
+# Install CLI + set up all agent skill files in one go:
+npm install -g @electrooo69/sped-cli && sped setup --all
+
+# Or just set up skills in the current project:
+sped setup
+
+# Force overwrite existing files:
+sped setup --all --force
 ```
+
+This automatically detects which AI agents you use and copies the right instruction files.
 
 ---
 
