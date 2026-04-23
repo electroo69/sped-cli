@@ -2,3 +2,9 @@ node_modules/
 *.log
 .DS_Store
 Thumbs.db
+
+# Frontend design skills (local only)
+.agents/
+.claude/
+.continue/
+skills-lock.json
