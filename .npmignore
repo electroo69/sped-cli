@@ -1,0 +1,15 @@
+# Dev & docs
+test/
+docs/
+.agents/
+.claude/
+.continue/
+.git/
+.gitignore
+skills-lock.json
+_*
+
+# OS
+.DS_Store
+Thumbs.db
+*.log

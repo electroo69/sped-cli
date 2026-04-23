@@ -1,8 +1,17 @@
 {
   "name": "sped-cli",
-  "version": "0.1.0",
-  "description": "Token-efficient command dispatcher for AI coding agents.",
+  "version": "1.0.0",
+  "description": "242 token-efficient shell aliases for AI coding agents. One install, every command works standalone.",
   "license": "MIT",
+  "author": "electroo69",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/electroo69/sped-cli.git"
+  },
+  "homepage": "https://electroo69.github.io/sped-cli/",
+  "bugs": {
+    "url": "https://github.com/electroo69/sped-cli/issues"
+  },
   "bin": {
     "sped": "./bin/sped.js",
     "sped-cli": "./bin/sped.js",
@@ -257,7 +266,10 @@
     "bin",
     "src",
     "defaults",
-    "README.md"
+    "scripts",
+    "skills",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "prepare": "node scripts/generate-alias-bins.js",
@@ -275,12 +287,24 @@
   },
   "keywords": [
     "cli",
-    "agents",
+    "shell",
+    "aliases",
+    "ai-agents",
     "developer-tools",
     "productivity",
     "codex",
-    "claude",
+    "claude-code",
     "cursor",
-    "copilot"
+    "copilot",
+    "gemini-cli",
+    "windsurf",
+    "git",
+    "docker",
+    "kubernetes",
+    "terraform",
+    "npm",
+    "command-line",
+    "shortcuts",
+    "token-efficient"
   ]
 }
