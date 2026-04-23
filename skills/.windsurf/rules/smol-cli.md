@@ -2,47 +2,6 @@
 
 This project uses `smol-cli` — a token-efficient command dispatcher with 242 shell aliases. Every alias is a standalone executable command (no prefix needed).
 
-## File Operations
-- `h <file> [n]` — head (first n lines, default 50)
-- `t <file> [n]` — tail (last n lines)
-- `l <file>` — cat with line numbers
-- `sf <pattern>` — find files by name
-- `sg <term> [dir]` — recursive grep
-- `todo` — find TODO/FIXME/HACK/XXX
-- `w <file> <content>` — write to file
-- `a <file> <content>` — append to file
-- `d <file> -f` — delete (requires -f)
-- `cp/mv <src> <dst>` — copy/move
-- `mk <dir>` — mkdir -p
-- `sr <old> <new> <file>` — search & replace
-- `wc <file>` — count lines
-
-## Git Workflow
-- `gs` — status, `ga` — add all, `gaf <f>` — add file
-- `gc <msg>` — commit, `gca <msg>` — commit all
-- `gp` — push, `gpf` — force push, `gpl` — pull
-- `gd` — diff, `gds` — diff staged
-- `gco <b>` — checkout, `gcb <b>` — create branch
-- `gl` — log, `glg` — graph log
-- `grs <f>` — restore, `gra` — restore all
-- `gst` — stash, `gstp` — pop
-- `gm <b>` — merge, `grb <b>` — rebase
-
-## Package Management (auto-detects npm/yarn/pnpm/bun)
-- `ni` — install, `nid <pkg>` — add dep
-- `dev` — dev server, `b` — build
-- `lint`/`fix`/`fmt` — lint/autofix/format
-- `check` — lint + types + test
-- `tu`/`tc` — test/coverage
-
-## Docker & Kubernetes
-- `dcu`/`dcd` — compose up/down, `dps` — ps
-- `kgp` — get pods, `kl <pod>` — logs
-- `kaf <f>` — kubectl apply -f
-
-## Terraform
-- `tfi`/`tfp`/`tfa` — init/plan/apply
-
 ## Flags
 - `--dry` — preview command without executing
 - `--explain` — describe what the alias does
@@ -53,3 +12,248 @@ This project uses `smol-cli` — a token-efficient command dispatcher with 242 s
 - Use `gs` not `git status`, `ni` not `npm install`
 - Use `sg` not `grep -rn`, `sf` not `find`
 - Run `smol ls` to see all 242 available aliases
+
+## Complete Alias Reference (242 commands)
+
+- `h` → `head -n {{2|50}} {{1}}`
+- `t` → `tail -n {{2|50}} {{1}}`
+- `l` → `cat -n {{1}}`
+- `v` → `less {{1}}`
+- `e` → `$EDITOR {{1}}`
+- `w` → `write {{1}} {{2}}`
+- `a` → `append {{1}} {{2}}`
+- `x` → `test -e {{1}}`
+- `i` → `stat {{1}}`
+- `d` → `rm {{1}}`
+- `cp` → `cp {{1}} {{2}}`
+- `mv` → `mv {{1}} {{2}}`
+- `cat` → `cat {{1}}`
+- `touch` → `touch {{1}}`
+- `wc` → `wc -l {{1}}`
+- `sz` → `du -sh {{1|.}}`
+- `ch` → `chmod +x {{1}}`
+- `ln` → `ln -s {{1}} {{2}}`
+- `hd` → `hexdump -C {{1}} | head -20`
+- `md5` → `md5sum {{1}}`
+- `sf` → `find . -name {{1}}`
+- `sg` → `grep -rn {{1}} {{2|.}}`
+- `sl` → `grep -rn {{1}} {{2}}`
+- `si` → `grep -rn import {{1}} .`
+- `sc` → `grep -rn {{1}} .`
+- `sr` → `sed -i s/{{1}}/{{2}}/g {{3}}`
+- `rg` → `rg {{1}} {{2|.}}`
+- `rgf` → `rg -l {{1}} {{2|.}}`
+- `rgc` → `rg -c {{1}} {{2|.}}`
+- `todo` → `grep -rn TODO\|FIXME\|HACK\|XXX {{1|.}}`
+- `sft` → `find . -name *.{{1}}`
+- `sfe` → `find . -name {{1}} -exec {{2}} {} ;`
+- `sfs` → `find . -type f -size +{{1}}`
+- `gs` → `git status`
+- `ga` → `git add .`
+- `gaf` → `git add {{1}}`
+- `gc` → `git commit -m {{1}}`
+- `gca` → `git commit -am {{1}}`
+- `gp` → `git push`
+- `gpf` → `git push --force-with-lease`
+- `gpl` → `git pull`
+- `gd` → `git diff`
+- `gds` → `git diff --staged`
+- `gdf` → `git diff {{1}}`
+- `gco` → `git checkout {{1}}`
+- `gcb` → `git checkout -b {{1}}`
+- `gb` → `git branch`
+- `gba` → `git branch -a`
+- `gbd` → `git branch -d {{1}}`
+- `gbD` → `git branch -D {{1}}`
+- `gl` → `git log --oneline -10`
+- `glg` → `git log --oneline --graph --all -20`
+- `gla` → `git log --oneline --all -20`
+- `grl` → `git reflog -10`
+- `gst` → `git stash`
+- `gstp` → `git stash pop`
+- `gstl` → `git stash list`
+- `grs` → `git restore {{1}}`
+- `grss` → `git restore --staged {{1}}`
+- `gra` → `git restore .`
+- `gm` → `git merge {{1}}`
+- `grb` → `git rebase {{1}}`
+- `grbi` → `git rebase -i {{1}}`
+- `gcl` → `git clone {{1}}`
+- `gbl` → `git blame {{1}}`
+- `gtag` → `git tag {{1}}`
+- `gcp` → `git cherry-pick {{1}}`
+- `grv` → `git revert {{1}}`
+- `gsh` → `git show {{1}}`
+- `grh` → `git reset HEAD {{1}}`
+- `grhh` → `git reset --hard HEAD`
+- `gcn` → `git clean -fd`
+- `gf` → `git fetch`
+- `gfa` → `git fetch --all`
+- `gpsu` → `git push -u origin {{1}}`
+- `gpr` → `git pull --rebase`
+- `ni` → `npm install`
+- `nid` → `npm install {{1}}`
+- `nidd` → `npm install -D {{1}}`
+- `nig` → `npm install -g {{1}}`
+- `nun` → `npm uninstall {{1}}`
+- `nr` → `npm run {{1}}`
+- `nu` → `npm update`
+- `nc` → `npm ci`
+- `nls` → `npm ls --depth=0`
+- `no` → `npm outdated`
+- `na` → `npm audit`
+- `naf` → `npm audit fix`
+- `np` → `npm publish`
+- `npx` → `npx {{1}}`
+- `nd` → `node {{1}}`
+- `pni` → `pnpm install`
+- `pna` → `pnpm add {{1}}`
+- `pnad` → `pnpm add -D {{1}}`
+- `pnr` → `pnpm run {{1}}`
+- `pnx` → `pnpm exec {{1}}`
+- `pnu` → `pnpm update`
+- `pnls` → `pnpm ls`
+- `yi` → `yarn install`
+- `ya` → `yarn add {{1}}`
+- `yad` → `yarn add -D {{1}}`
+- `yr` → `yarn run {{1}}`
+- `yu` → `yarn upgrade`
+- `bi` → `bun install`
+- `ba` → `bun add {{1}}`
+- `bad` → `bun add -d {{1}}`
+- `br` → `bun run {{1}}`
+- `bx` → `bunx {{1}}`
+- `py` → `python3 {{1}}`
+- `py2` → `python {{1}}`
+- `pi` → `pip install {{1}}`
+- `pir` → `pip install -r requirements.txt`
+- `pf` → `pip freeze`
+- `pfr` → `pip freeze > requirements.txt`
+- `pun` → `pip uninstall {{1}}`
+- `venv` → `python3 -m venv .venv`
+- `act` → `source .venv/bin/activate`
+- `pt` → `pytest`
+- `ptv` → `pytest -v`
+- `ptc` → `pytest --cov`
+- `dj` → `python manage.py {{1}}`
+- `drs` → `python manage.py runserver`
+- `dmm` → `python manage.py makemigrations`
+- `dm` → `python manage.py migrate`
+- `cb` → `cargo build`
+- `cbr` → `cargo build --release`
+- `cr` → `cargo run`
+- `crr` → `cargo run --release`
+- `ct` → `cargo test`
+- `cc` → `cargo check`
+- `ccl` → `cargo clippy`
+- `cf` → `cargo fmt`
+- `cdoc` → `cargo doc --open`
+- `cadd` → `cargo add {{1}}`
+- `gor` → `go run .`
+- `gob` → `go build`
+- `got` → `go test -v ./...`
+- `gotc` → `go test -v -cover ./...`
+- `gof` → `go fmt ./...`
+- `gomod` → `go mod tidy`
+- `gog` → `go get {{1}}`
+- `tu` → `unit tests`
+- `tc` → `test coverage`
+- `lint` → `lint`
+- `fix` → `lint --fix`
+- `fmt` → `format`
+- `b` → `build`
+- `dev` → `dev server`
+- `check` → `lint + types + test`
+- `dc` → `docker compose {{1}}`
+- `dcu` → `docker compose up -d`
+- `dcd` → `docker compose down`
+- `dcl` → `docker compose logs -f {{1}}`
+- `dcr` → `docker compose restart {{1}}`
+- `dcb` → `docker compose build`
+- `dps` → `docker ps`
+- `dpa` → `docker ps -a`
+- `di` → `docker images`
+- `dex` → `docker exec -it {{1}} /bin/bash`
+- `dlog` → `docker logs -f {{1}}`
+- `drm` → `docker rm {{1}}`
+- `drmi` → `docker rmi {{1}}`
+- `dpr` → `docker system prune -af`
+- `db` → `docker build -t {{1}} .`
+- `drun` → `docker run -it {{1}}`
+- `dstop` → `docker stop {{1}}`
+- `dvol` → `docker volume ls`
+- `k` → `kubectl {{1}}`
+- `kgp` → `kubectl get pods`
+- `kga` → `kubectl get all`
+- `kgs` → `kubectl get svc`
+- `kgd` → `kubectl get deployments`
+- `kgn` → `kubectl get nodes`
+- `kgi` → `kubectl get ingress`
+- `kgns` → `kubectl get namespaces`
+- `kd` → `kubectl describe {{1}}`
+- `kl` → `kubectl logs -f {{1}}`
+- `kex` → `kubectl exec -it {{1}} -- /bin/bash`
+- `kaf` → `kubectl apply -f {{1}}`
+- `kdf` → `kubectl delete -f {{1}}`
+- `kns` → `kubectl config set-context --current --namespace {{1}}`
+- `kctx` → `kubectl config current-context`
+- `ksc` → `kubectl scale {{1}} --replicas={{2}}`
+- `kpf` → `kubectl port-forward {{1}} {{2}}`
+- `ktp` → `kubectl top pods`
+- `ktn` → `kubectl top nodes`
+- `kroll` → `kubectl rollout restart {{1}}`
+- `krs` → `kubectl rollout status {{1}}`
+- `tf` → `terraform {{1}}`
+- `tfi` → `terraform init`
+- `tfp` → `terraform plan`
+- `tfa` → `terraform apply`
+- `tfaa` → `terraform apply -auto-approve`
+- `tfd` → `terraform destroy`
+- `tfs` → `terraform state list`
+- `tff` → `terraform fmt`
+- `tfv` → `terraform validate`
+- `tfo` → `terraform output`
+- `tfw` → `terraform workspace {{1}}`
+- `cur` → `curl -s {{1}}`
+- `curj` → `curl -s -H Content-Type:application/json {{1}}`
+- `curp` → `curl -s -X POST {{1}}`
+- `curf` → `curl -sL -o {{2}} {{1}}`
+- `wgt` → `wget {{1}}`
+- `ping` → `ping -c 4 {{1}}`
+- `port` → `lsof -i :{{1}}`
+- `myip` → `curl -s ifconfig.me`
+- `dns` → `nslookup {{1}}`
+- `ssl` → `openssl s_client -connect {{1}}:443`
+- `tgz` → `tar -czvf {{1}}.tar.gz {{1}}`
+- `untgz` → `tar -xzvf {{1}}`
+- `zipc` → `zip -r {{1}}.zip {{1}}`
+- `unzipc` → `unzip {{1}}`
+- `sshi` → `ssh {{1}}`
+- `scpu` → `scp {{1}} {{2}}`
+- `scpd` → `scp {{2}} {{1}}`
+- `vdep` → `vercel deploy`
+- `vprod` → `vercel --prod`
+- `ndep` → `netlify deploy --prod`
+- `fdep` → `firebase deploy`
+- `sdep` → `supabase functions deploy {{1}}`
+- `rup` → `railway up`
+- `cls` → `clear`
+- `la` → `ls -la`
+- `lt` → `tree . -L 3`
+- `ll` → `ls -lah`
+- `up` → `cd ..`
+- `up2` → `cd ../..`
+- `up3` → `cd ../../..`
+- `mk` → `mkdir -p {{1}}`
+- `hist` → `history`
+- `path` → `echo $PATH`
+- `env` → `printenv`
+- `evar` → `echo ${{1}}`
+- `src` → `source {{1}}`
+- `xarg` → `xargs {{1}}`
+- `diff2` → `diff {{1}} {{2}}`
+- `watch` → `watch -n {{2|2}} {{1}}`
+- `ts` → `date +%s`
+- `now` → `date`
+- `cal` → `cal`
+- `alias` → `alias {{1}}`
