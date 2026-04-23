@@ -1,0 +1,51 @@
+---
+description: Use smol-cli token-efficient shell aliases for all terminal commands
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# smol-cli Shell Aliases
+
+This project uses `smol-cli` — 242 token-efficient shell aliases. Every alias is a standalone command (no prefix).
+
+## File Operations
+- `h <file> [n]` — head (first n lines, default 50)
+- `t <file> [n]` — tail (last n lines)
+- `l <file>` — cat with line numbers
+- `sf <pattern>` — find files by name
+- `sg <term> [dir]` — recursive grep
+- `todo` — find TODO/FIXME/HACK/XXX
+- `w <file> <content>` — write to file
+- `a <file> <content>` — append to file
+- `d <file> -f` — delete (requires -f)
+- `cp/mv <src> <dst>` — copy/move
+- `mk <dir>` — mkdir -p
+- `sr <old> <new> <file>` — search & replace
+- `wc <file>` — count lines
+
+## Git
+- `gs` — status, `ga` — add all, `gaf <f>` — add file
+- `gc <msg>` — commit, `gca <msg>` — commit all
+- `gp` — push, `gpf` — force push, `gpl` — pull
+- `gd` — diff, `gds` — diff staged
+- `gco <b>` — checkout, `gcb <b>` — create branch
+- `gl` — log, `glg` — graph log
+- `grs <f>` — restore, `gra` — restore all
+- `gst` — stash, `gstp` — pop
+- `gm <b>` — merge, `grb <b>` — rebase
+
+## Build & Dev (auto-detects package manager)
+- `ni` — install, `nid <pkg>` — add dep
+- `dev` — dev server, `b` — build
+- `lint`/`fix`/`fmt` — lint/autofix/format
+- `check` — lint + types + test
+- `tu`/`tc` — test/coverage
+
+## Docker & K8s
+- `dcu`/`dcd` — compose up/down, `dps` — ps
+- `kgp` — get pods, `kl <pod>` — logs
+
+## Rules
+- ALWAYS use smol aliases over full commands
+- Use `--dry` to preview, `--explain` to describe
+- Destructive ops require `--force` or `-f`
