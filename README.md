@@ -434,7 +434,7 @@ These files teach each agent to prefer sped-cli's short aliases over long shell 
 
 ```bash
 # Install CLI + set up all agent skill files in one go:
-npm install -g @electrooo69/sped-cli && sped setup --all
+npm install -g @electrooo69/sped-cli; sped setup --all
 
 # Or just set up skills in the current project:
 sped setup
