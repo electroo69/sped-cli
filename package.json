@@ -15,6 +15,7 @@
   "bin": {
     "sped": "./bin/sped.js",
     "sped-cli": "./bin/sped.js",
+    "sped-setup": "./bin/setup.js",
     "h": "./bin/aliases/h.js",
     "t": "./bin/aliases/t.js",
     "l": "./bin/aliases/l.js",
