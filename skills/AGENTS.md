@@ -1,13 +1,13 @@
-# smol-cli — Agent Shell Command Reference
+# sped-cli — Agent Shell Command Reference
 
-This project uses `smol-cli` (v0.1.0) for all shell operations. smol-cli provides 242 token-efficient aliases that replace long shell commands with 1-4 character shortcuts.
+This project uses `sped-cli` (v0.1.0) for all shell operations. sped-cli provides 242 token-efficient aliases that replace long shell commands with 1-4 character shortcuts.
 
-**Every alias is a standalone command. Do not prefix with `smol`.**
+**Every alias is a standalone command. Do not prefix with `sped`.**
 
 ## Setup
-- Install: `npm install -g smol-cli`
-- Config: `smol init` creates `smol.config.json`
-- List aliases: `smol ls`
+- Install: `npm install -g sped-cli`
+- Config: `sped init` creates `sped.config.json`
+- List aliases: `sped ls`
 
 ## Flags
 - `--dry` — preview without executing
@@ -15,7 +15,7 @@ This project uses `smol-cli` (v0.1.0) for all shell operations. smol-cli provide
 - `-f` / `--force` — confirm destructive ops
 
 ## Conventions
-- Always use smol aliases instead of full shell commands
+- Always use sped aliases instead of full shell commands
 - Prefer `gs` over `git status`, `ni` over `npm install`
 - Use `--dry` before destructive operations
 - Use `todo` to find code annotations

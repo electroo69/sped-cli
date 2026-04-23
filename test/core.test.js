@@ -38,7 +38,7 @@ test("suggestAlias returns the closest match", () => {
   assert.equal(suggestAlias("gss", ["gs", "gd", "ga"]), "gs");
 });
 
-test("formatUsage renders standalone aliases without the smol prefix", () => {
+test("formatUsage renders standalone aliases without the sped prefix", () => {
   assert.equal(
     formatUsage({ commandName: "h", invokedAsStandalone: true }, "h", "<file> [n]"),
     "Usage: h <file> [n]"
@@ -55,13 +55,13 @@ test("run supports the standalone h entrypoint", async () => {
   });
 
   assert.equal(code, 0);
-  assert.equal(capture.output.trim(), "# smol-cli");
+  assert.equal(capture.output.trim(), "# sped-cli");
 });
 
-test("run prints version for the smol-cli shim", async () => {
+test("run prints version for the sped-cli shim", async () => {
   const capture = createStdoutCapture();
   const code = await run(["-v"], {
-    commandName: "smol-cli",
+    commandName: "sped-cli",
     stdout: capture.stream
   });
 

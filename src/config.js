@@ -126,7 +126,7 @@ function getHomeConfigPath() {
 }
 
 async function loadConfig(startDir = process.cwd()) {
-  const projectConfigPath = await findUp(startDir, "smol.config.json");
+  const projectConfigPath = await findUp(startDir, "sped.config.json");
   const homeConfigPath = await pathExists(getHomeConfigPath()) ? getHomeConfigPath() : null;
   const defaultConfig = getDefaultConfig();
   const homeConfig = normalizeConfig(await readJsonIfExists(homeConfigPath));
@@ -156,9 +156,9 @@ async function writeConfig(filePath, config) {
 }
 
 async function initProjectConfig(startDir = process.cwd()) {
-  const filePath = path.resolve(startDir, "smol.config.json");
+  const filePath = path.resolve(startDir, "sped.config.json");
   if (await pathExists(filePath)) {
-    const error = new Error("smol.config.json already exists");
+    const error = new Error("sped.config.json already exists");
     error.exitCode = 1;
     throw error;
   }
@@ -168,14 +168,14 @@ async function initProjectConfig(startDir = process.cwd()) {
 }
 
 async function resolveEditableConfigPath(startDir = process.cwd()) {
-  const existingProjectConfig = await findUp(startDir, "smol.config.json");
+  const existingProjectConfig = await findUp(startDir, "sped.config.json");
   if (existingProjectConfig) {
     return existingProjectConfig;
   }
 
   const projectRoot = await findProjectRoot(startDir);
   if (projectRoot) {
-    return path.join(projectRoot, "smol.config.json");
+    return path.join(projectRoot, "sped.config.json");
   }
 
   return getHomeConfigPath();

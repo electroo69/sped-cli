@@ -1,15 +1,15 @@
 ---
-description: Use smol-cli 242 token-efficient shell aliases for all terminal commands
+description: Use sped-cli 242 token-efficient shell aliases for all terminal commands
 globs: ["**/*"]
 alwaysApply: true
 ---
 
-# smol-cli Shell Aliases
+# sped-cli Shell Aliases
 
-This project uses `smol-cli` — 242 token-efficient shell aliases. Every alias is a standalone command (no prefix).
+This project uses `sped-cli` — 242 token-efficient shell aliases. Every alias is a standalone command (no prefix).
 
 ## Rules
-- ALWAYS use smol aliases over full commands
+- ALWAYS use sped aliases over full commands
 - Use `--dry` to preview, `--explain` to describe
 - Destructive ops require `--force` or `-f`
 

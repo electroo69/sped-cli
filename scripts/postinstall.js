@@ -3,14 +3,14 @@ const path = require("path");
 const { spawnSync } = require("child_process");
 
 /**
- * PowerShell built-in aliases that conflict with smol-cli aliases.
+ * PowerShell built-in aliases that conflict with sped-cli aliases.
  * We remove these PS aliases and create global functions that
- * forward to the smol standalone bin instead.
+ * forward to the sped standalone bin instead.
  */
 const PS_CONFLICTS = ["h", "cp", "mv", "cat", "sl", "si", "sc", "gc", "gp", "gl", "gm", "ni", "cls"];
 
-const START_MARKER = "# >>> smol-cli aliases >>>";
-const END_MARKER = "# <<< smol-cli aliases <<<";
+const START_MARKER = "# >>> sped-cli aliases >>>";
+const END_MARKER = "# <<< sped-cli aliases <<<";
 
 function buildProfileBlock() {
   const lines = [START_MARKER];
@@ -26,7 +26,7 @@ function buildProfileBlock() {
   lines.push("");
 
   for (const alias of PS_CONFLICTS) {
-    lines.push(`function global:${alias} { & smol ${alias} @args }`);
+    lines.push(`function global:${alias} { & sped ${alias} @args }`);
   }
 
   lines.push(END_MARKER, "");
@@ -117,7 +117,7 @@ function main() {
   if (patched.length > 0) {
     const aliases = PS_CONFLICTS.join(", ");
     process.stdout.write(
-      `smol-cli: configured PowerShell profiles so [${aliases}] forward to smol.\n` +
+      `sped-cli: configured PowerShell profiles so [${aliases}] forward to smol.\n` +
       `Patched: ${patched.join(", ")}\n` +
       "Restart PowerShell or run `. $PROFILE` to apply.\n"
     );

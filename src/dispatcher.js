@@ -87,7 +87,7 @@ function getCommandPrefix(context, alias) {
     return context.commandName || alias;
   }
 
-  return `${context.commandName || "smol"} ${alias}`;
+  return `${context.commandName || "sped"} ${alias}`;
 }
 
 function formatUsage(context, alias, args = "") {
@@ -1142,8 +1142,8 @@ async function createBuiltinTask(alias, ctx) {
   }
 }
 
-function printHelp(stdout, commandName = "smol") {
-  out(stdout, `smol-cli ${PACKAGE.version}`);
+function printHelp(stdout, commandName = "sped") {
+  out(stdout, `sped-cli ${PACKAGE.version}`);
   out(stdout, `Usage: ${commandName} <alias> [args...]`);
   out(stdout, "Standalone built-in command: h <file> [n]");
   out(stdout, `Config commands: ${commandName} init, add, ls, rm, reset`);
@@ -1164,7 +1164,7 @@ async function handleManagementCommand(argv, cwd, stdout) {
     }
     case "add": {
       if (argv.length < 3) {
-        throw new CliError("Usage: smol add <alias> <cmd>");
+        throw new CliError("Usage: sped add <alias> <cmd>");
       }
       const filePath = await addAlias(cwd, argv[1], argv.slice(2).join(" "));
       out(stdout, filePath);
@@ -1182,7 +1182,7 @@ async function handleManagementCommand(argv, cwd, stdout) {
     }
     case "rm": {
       if (argv.length < 2) {
-        throw new CliError("Usage: smol rm <alias>");
+        throw new CliError("Usage: sped rm <alias>");
       }
       const filePath = await removeAlias(cwd, argv[1]);
       out(stdout, filePath);
@@ -1229,7 +1229,7 @@ async function run(argv = process.argv.slice(2), options = {}) {
   const cwd = options.cwd || process.cwd();
   const env = options.env || process.env;
   const stdout = options.stdout || process.stdout;
-  const commandName = options.commandName || "smol";
+  const commandName = options.commandName || "sped";
   const invokedAsStandalone = Boolean(options.invokedAsStandalone);
 
   if (argv.length === 0) {

@@ -1,6 +1,6 @@
-# smol-cli — Shell Command Reference
+# sped-cli — Shell Command Reference
 
-This project uses `smol-cli` for all shell operations. **Always use smol aliases instead of full commands.** Every alias is a standalone executable — no `smol` prefix needed.
+This project uses `sped-cli` for all shell operations. **Always use sped aliases instead of full commands.** Every alias is a standalone executable — no `sped` prefix needed.
 
 ## Flags
 - `--dry` — print command without executing
@@ -8,7 +8,7 @@ This project uses `smol-cli` for all shell operations. **Always use smol aliases
 - `--force` / `-f` — confirm destructive ops
 
 ## Rules
-- ALWAYS prefer smol aliases over raw shell commands
+- ALWAYS prefer sped aliases over raw shell commands
 - Use `--dry` to preview before destructive operations
 - Use `gs` not `git status`, `ni` not `npm install`, etc.
 - When searching code, use `sg`, `sf`, `todo` — not raw grep/find

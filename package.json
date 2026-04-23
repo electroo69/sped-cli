@@ -1,11 +1,11 @@
 {
-  "name": "smol-cli",
+  "name": "sped-cli",
   "version": "0.1.0",
   "description": "Token-efficient command dispatcher for AI coding agents.",
   "license": "MIT",
   "bin": {
-    "smol": "./bin/smol.js",
-    "smol-cli": "./bin/smol.js",
+    "sped": "./bin/sped.js",
+    "sped-cli": "./bin/sped.js",
     "h": "./bin/aliases/h.js",
     "t": "./bin/aliases/t.js",
     "l": "./bin/aliases/l.js",

@@ -1,6 +1,6 @@
-# smol-cli Shell Aliases
+# sped-cli Shell Aliases
 
-This project uses `smol-cli` for shell operations. Use these 242 token-efficient aliases instead of full shell commands. Every alias is a standalone executable — no prefix needed.
+This project uses `sped-cli` for shell operations. Use these 242 token-efficient aliases instead of full shell commands. Every alias is a standalone executable — no prefix needed.
 
 ## Flags
 - `--dry` — preview command
@@ -8,7 +8,7 @@ This project uses `smol-cli` for shell operations. Use these 242 token-efficient
 - `-f` / `--force` — confirm destructive ops
 
 ## Rules
-Always use smol-cli aliases instead of full commands. Use `gs` not `git status`, `ni` not `npm install`, `sg` not `grep -rn`.
+Always use sped-cli aliases instead of full commands. Use `gs` not `git status`, `ni` not `npm install`, `sg` not `grep -rn`.
 
 ## Complete Alias Reference (242 commands)
 

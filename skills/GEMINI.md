@@ -1,22 +1,22 @@
 # Project Instructions
 
 ## Shell Commands
-This project uses `smol-cli` — a token-efficient command dispatcher with 242 shell aliases. Every alias is a standalone command (no prefix needed).
+This project uses `sped-cli` — a token-efficient command dispatcher with 242 shell aliases. Every alias is a standalone command (no prefix needed).
 
 ## Role
-When executing shell commands, always prefer smol-cli aliases over full commands. This saves tokens and reduces syntax errors.
+When executing shell commands, always prefer sped-cli aliases over full commands. This saves tokens and reduces syntax errors.
 
 ## Known Facts
-- smol-cli auto-detects npm/yarn/pnpm/bun
+- sped-cli auto-detects npm/yarn/pnpm/bun
 - Use `--dry` flag to preview commands
 - Use `--explain` to see what an alias does
 - Destructive commands (like `d`) require `--force` or `-f`
 
 ## Instructions
-- Always use smol aliases, never full shell commands
+- Always use sped aliases, never full shell commands
 - Use `sg` instead of `grep`, `sf` instead of `find`
 - Use `gs`/`ga`/`gc`/`gp` for git workflow
-- Run `smol ls` to see all available aliases
+- Run `sped ls` to see all available aliases
 
 ## Complete Alias Reference (242 commands)
 

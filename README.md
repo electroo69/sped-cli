@@ -1,26 +1,26 @@
-# smol-cli
+# sped-cli
 
 > **242 token-efficient shell aliases for AI coding agents and developers.** One install, every command works standalone — no prefix needed.
 
-[![npm version](https://img.shields.io/npm/v/smol-cli)](https://www.npmjs.com/package/smol-cli)
+[![npm version](https://img.shields.io/npm/v/sped-cli)](https://www.npmjs.com/package/sped-cli)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org)
 
 ---
 
-## What is smol-cli?
+## What is sped-cli?
 
-`smol-cli` is a **command dispatcher** that turns long, repetitive shell commands into ultra-short aliases. It was designed from the ground up for **AI coding agents** — tools like Claude Code, OpenAI Codex, Cursor, Gemini CLI, GitHub Copilot, and Windsurf — where every token counts.
+`sped-cli` is a **command dispatcher** that turns long, repetitive shell commands into ultra-short aliases. It was designed from the ground up for **AI coding agents** — tools like Claude Code, OpenAI Codex, Cursor, Gemini CLI, GitHub Copilot, and Windsurf — where every token counts.
 
 Instead of typing `git commit -am "fix bug"`, an agent just types `gca fix bug`.
 Instead of `kubectl get pods`, it's `kgp`.
 Instead of `grep -rn TODO .`, it's `todo`.
 
-**Every alias works as a standalone command.** No `smol` prefix required.
+**Every alias works as a standalone command.** No `sped` prefix required.
 
 ### Why does this matter?
 
-| Problem | How smol-cli solves it |
+| Problem | How sped-cli solves it |
 |---------|----------------------|
 | AI agents waste tokens on long shell commands | 242 aliases, each 1-4 characters |
 | Agents hallucinate wrong flags/syntax | Built-in commands with correct semantics |
@@ -35,7 +35,7 @@ Instead of `grep -rn TODO .`, it's `todo`.
 ### Install
 
 ```bash
-npm install -g smol-cli
+npm install -g sped-cli
 ```
 
 ### Use
@@ -371,33 +371,33 @@ sr old new file.txt  # sed replace in file
 ### Initialize a project config
 
 ```bash
-smol init
+sped init
 ```
 
-Creates `smol.config.json` with all default aliases. You can customize per-project.
+Creates `sped.config.json` with all default aliases. You can customize per-project.
 
 ### Add custom aliases
 
 ```bash
-smol add myalias "my-custom-command {{1}}"
+sped add myalias "my-custom-command {{1}}"
 ```
 
 ### List all aliases
 
 ```bash
-smol ls
+sped ls
 ```
 
 ### Remove an alias
 
 ```bash
-smol rm myalias
+sped rm myalias
 ```
 
 ### Reset to defaults
 
 ```bash
-smol reset
+sped reset
 ```
 
 ### Template syntax
@@ -416,7 +416,7 @@ Aliases use `{{n}}` placeholders for arguments with optional defaults:
 
 ## AI Agent Integration
 
-smol-cli ships with **ready-to-use instruction files** for every major AI coding agent. Copy the appropriate file into your project:
+sped-cli ships with **ready-to-use instruction files** for every major AI coding agent. Copy the appropriate file into your project:
 
 | Agent | File | Location |
 |-------|------|----------|
@@ -424,18 +424,18 @@ smol-cli ships with **ready-to-use instruction files** for every major AI coding
 | **OpenAI Codex** | `AGENTS.md` | Project root |
 | **Gemini CLI** | `GEMINI.md` | Project root |
 | **GitHub Copilot** | `.github/copilot-instructions.md` | `.github/` directory |
-| **Cursor** | `.cursor/rules/smol-cli.mdc` | `.cursor/rules/` directory |
-| **Windsurf** | `.windsurf/rules/smol-cli.md` | `.windsurf/rules/` directory |
+| **Cursor** | `.cursor/rules/sped-cli.mdc` | `.cursor/rules/` directory |
+| **Windsurf** | `.windsurf/rules/sped-cli.md` | `.windsurf/rules/` directory |
 
-These files teach each agent to prefer smol-cli's short aliases over long shell commands, saving tokens and reducing errors.
+These files teach each agent to prefer sped-cli's short aliases over long shell commands, saving tokens and reducing errors.
 
 ### Quick setup for all agents
 
 ```bash
 # Copy the instruction files you need from the skills/ directory:
-cp node_modules/smol-cli/skills/CLAUDE.md ./CLAUDE.md
-cp node_modules/smol-cli/skills/AGENTS.md ./AGENTS.md
-cp node_modules/smol-cli/skills/GEMINI.md ./GEMINI.md
+cp node_modules/sped-cli/skills/CLAUDE.md ./CLAUDE.md
+cp node_modules/sped-cli/skills/AGENTS.md ./AGENTS.md
+cp node_modules/sped-cli/skills/GEMINI.md ./GEMINI.md
 ```
 
 ---
@@ -460,7 +460,7 @@ d temp.txt -f   # → deletes temp.txt (--force required)
 
 ## Windows Support
 
-On Windows PowerShell, several smol-cli aliases conflict with built-in PS aliases (`h`, `cp`, `mv`, `gc`, `gl`, etc.). The installer **automatically patches your PowerShell profile** to override these conflicts so all 242 commands work seamlessly.
+On Windows PowerShell, several sped-cli aliases conflict with built-in PS aliases (`h`, `cp`, `mv`, `gc`, `gl`, etc.). The installer **automatically patches your PowerShell profile** to override these conflicts so all 242 commands work seamlessly.
 
 After install, restart PowerShell or run:
 
@@ -472,7 +472,7 @@ After install, restart PowerShell or run:
 
 ## How It Works
 
-1. **Alias resolution** — smol-cli loads aliases from `smol.config.json` (or defaults)
+1. **Alias resolution** — sped-cli loads aliases from `sped.config.json` (or defaults)
 2. **Built-in commands** — File operations (`h`, `t`, `l`, `sf`, etc.) run as native Node.js for cross-platform reliability
 3. **Shell passthrough** — Git, Docker, k8s commands are dispatched to the real CLI tools
 4. **Smart lifecycle** — `dev`, `build`, `lint`, `test` auto-detect your project's package manager and scripts
@@ -481,17 +481,17 @@ After install, restart PowerShell or run:
 
 ## FAQ
 
-### Does smol-cli replace my shell aliases?
+### Does sped-cli replace my shell aliases?
 
-No. It complements them. smol-cli aliases are installed as standalone executables, so they work in any shell (bash, zsh, PowerShell, cmd) without manual `.bashrc` configuration.
+No. It complements them. sped-cli aliases are installed as standalone executables, so they work in any shell (bash, zsh, PowerShell, cmd) without manual `.bashrc` configuration.
 
 ### Can I add my own aliases?
 
-Yes. Run `smol add <alias> "<command>"` or edit `smol.config.json` directly.
+Yes. Run `sped add <alias> "<command>"` or edit `sped.config.json` directly.
 
 ### Does it work without Node.js tools installed?
 
-File operations (`h`, `t`, `l`, `sf`, `sg`, etc.) are built into smol-cli and work everywhere. Tool-specific aliases (like `kgp` for kubectl) require that tool to be installed.
+File operations (`h`, `t`, `l`, `sf`, `sg`, etc.) are built into sped-cli and work everywhere. Tool-specific aliases (like `kgp` for kubectl) require that tool to be installed.
 
 ### Is it safe to use in CI/CD?
 
