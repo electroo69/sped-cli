@@ -117,6 +117,25 @@ footer{padding:40px 24px;text-align:center;border-top:1px solid var(--border);co
 footer a{color:var(--green)}
 
 /* ─── RESPONSIVE ─── */
+/* ─── ANIMATIONS ─── */
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 20px var(--green-glow)}50%{box-shadow:0 0 40px var(--green),0 0 60px var(--green-glow)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes typewriter{from{width:0}to{width:100%}}
+.hero h1{animation:slideUp .8s ease-out}
+.hero .tagline{animation:slideUp .8s ease-out .2s both}
+.hero-cta{animation:slideUp .8s ease-out .4s both}
+.badge{animation:float 3s ease-in-out infinite}
+.btn-primary{animation:glowPulse 3s ease-in-out infinite}
+.cat-card,.stat,.agent-card{opacity:0;transform:translateY(20px);transition:all .5s ease-out}
+.cat-card.visible,.stat.visible,.agent-card.visible{opacity:1;transform:translateY(0)}
+.cat-card:nth-child(2),.agent-card:nth-child(2){transition-delay:.1s}
+.cat-card:nth-child(3),.agent-card:nth-child(3){transition-delay:.15s}
+.cat-card:nth-child(4),.agent-card:nth-child(4){transition-delay:.2s}
+.cat-card:nth-child(5),.agent-card:nth-child(5){transition-delay:.25s}
+.cat-card:nth-child(6),.agent-card:nth-child(6){transition-delay:.3s}
+.install-box{transition:all .3s;animation:glowPulse 4s ease-in-out infinite}
+.terminal{animation:slideUp 1s ease-out .6s both}
 @media(max-width:640px){
   .hero h1{font-size:2.5rem;letter-spacing:-1px}
   .cat-grid{grid-template-columns:1fr}
@@ -153,7 +172,7 @@ footer a{color:var(--green)}
 <section class="stats">
   <div class="stat"><div class="stat-num" data-count="242">0</div><div class="stat-label">Shell Aliases</div></div>
   <div class="stat"><div class="stat-num" data-count="18">0</div><div class="stat-label">Categories</div></div>
-  <div class="stat"><div class="stat-num" data-count="6">0</div><div class="stat-label">AI Agent Skills</div></div>
+  <div class="stat"><div class="stat-num" data-count="11">0</div><div class="stat-label">AI Agent Skills</div></div>
   <div class="stat"><div class="stat-num" data-count="0">0</div><div class="stat-label">Config Needed</div></div>
 </section>
 
@@ -181,12 +200,17 @@ footer a{color:var(--green)}
   <h2>Built for <span class="accent">every AI agent</span></h2>
   <p class="sub">Ships with ready-to-use skill files. One command sets up everything: <code style="color:var(--green)">sped setup --all</code></p>
   <div class="agent-grid">
-    <div class="agent-card"><span class="icon">🧠</span><span class="name">Claude Code</span><span class="file">CLAUDE.md</span></div>
-    <div class="agent-card"><span class="icon">🤖</span><span class="name">OpenAI Codex</span><span class="file">AGENTS.md</span></div>
-    <div class="agent-card"><span class="icon">💎</span><span class="name">Gemini CLI</span><span class="file">GEMINI.md</span></div>
-    <div class="agent-card"><span class="icon">✦</span><span class="name">Cursor</span><span class="file">.cursor/rules/</span></div>
-    <div class="agent-card"><span class="icon">🐙</span><span class="name">Copilot</span><span class="file">.github/</span></div>
-    <div class="agent-card"><span class="icon">🌊</span><span class="name">Windsurf</span><span class="file">.windsurf/rules/</span></div>
+    <div class="agent-card"><span class="icon">🧠</span><span class="name">Claude Code</span><span class="file">--claude</span></div>
+    <div class="agent-card"><span class="icon">🤖</span><span class="name">Codex</span><span class="file">--codex</span></div>
+    <div class="agent-card"><span class="icon">💎</span><span class="name">Gemini CLI</span><span class="file">--gemini</span></div>
+    <div class="agent-card"><span class="icon">✦</span><span class="name">Cursor</span><span class="file">--cursor</span></div>
+    <div class="agent-card"><span class="icon">🐙</span><span class="name">Copilot</span><span class="file">--copilot</span></div>
+    <div class="agent-card"><span class="icon">🌊</span><span class="name">Windsurf</span><span class="file">--windsurf</span></div>
+    <div class="agent-card"><span class="icon">🚀</span><span class="name">Antigravity</span><span class="file">--antigravity</span></div>
+    <div class="agent-card"><span class="icon">⚡</span><span class="name">Cline</span><span class="file">--cline</span></div>
+    <div class="agent-card"><span class="icon">🔊</span><span class="name">Amp</span><span class="file">--amp</span></div>
+    <div class="agent-card"><span class="icon">🔄</span><span class="name">Continue</span><span class="file">--continue</span></div>
+    <div class="agent-card"><span class="icon">📝</span><span class="name">Aider</span><span class="file">--aider</span></div>
   </div>
 </section>
 
@@ -251,6 +275,12 @@ const observer = new IntersectionObserver(entries => {
   });
 }, {threshold: 0.5});
 document.querySelectorAll('.stat-num').forEach(el => observer.observe(el));
+
+// Scroll reveal animation
+const reveal = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); reveal.unobserve(e.target); } });
+}, {threshold: 0.15});
+document.querySelectorAll('.cat-card,.stat,.agent-card').forEach(el => reveal.observe(el));
 </script>
 </body>
 </html>
