@@ -18,7 +18,11 @@ sped setup --all
 Then paste this **universal prompt** into any AI agent (Codex, Claude, Cursor, Copilot, Gemini, etc.):
 
 ```
-sped-cli is installed in this project. Read the ENTIRE .sped-cli/DOCS.md and .sped-cli/aliases.json files NOW — do NOT stop at 20 or 40 lines, read ALL of them. These contain 324 shell aliases you MUST use instead of long-form commands. For example: gs not git status, ni not npm install, nxa not npx create-next-app. If an alias fails, install sped-cli first: npm i -g @electrooo69/sped-cli@latest --force. If you cannot install, expand the alias manually but ALWAYS comment which alias you are expanding. Never silently use long-form commands.
+Setup once per project: install with `npm i -g @electrooo69/sped-cli@latest --force`, then run `sped setup --all` in the project root if `.sped-cli/` is missing.
+Never delete `.sped-cli/`.
+Only follow the instruction file for your current agent. Do not delete or modify other agents' instruction files unless explicitly asked.
+Read the entire `.sped-cli/DOCS.md` and `.sped-cli/aliases.json` files before using shell commands.
+Use sped-cli aliases whenever available (`gs`, `ni`, `nxa`, etc.). If an alias is unavailable, expand it manually and include a short comment noting which alias you expanded. Never silently use long-form commands.
 ```
 
 ---

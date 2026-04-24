@@ -1,16 +1,10 @@
 # MANDATORY: sped-cli Shell Rules
 
-**RULE: Use sped-cli aliases for ALL shell commands. NEVER use long-form.**
-
-## Setup
-- Aliases are standalone commands. No prefix needed: `gs`, `ni`, `nxa my-app`
-- Full reference: read `.sped-cli/aliases.json` (JSON) or `.sped-cli/DOCS.md` (table)
-- If alias fails: run `npm i -g @electrooo69/sped-cli@latest --force`
-- If you CANNOT install, expand manually with comment: `# sped: nxa my-app`
-
-**READ THE FULL `.sped-cli/aliases.json` FILE to look up any command you need.**
-**READ THE FULL `.sped-cli/DOCS.md` FILE for the complete alias→command reference table.**
-**DO NOT only read the first 20-40 lines. Read the ENTIRE files above for all 324 commands.**
+Setup once per project: install with `npm i -g @electrooo69/sped-cli@latest --force`, then run `sped setup --all` in the project root if `.sped-cli/` is missing.
+Never delete `.sped-cli/`.
+Only follow the instruction file for your current agent. Do not delete or modify other agents' instruction files unless explicitly asked.
+Read the entire `.sped-cli/DOCS.md` and `.sped-cli/aliases.json` files before using shell commands.
+Use sped-cli aliases whenever available (`gs`, `ni`, `nxa`, etc.). If an alias is unavailable, expand it manually and include a short comment noting which alias you expanded. Never silently use long-form commands.
 
 ## Most Used Aliases (memorize these)
 
