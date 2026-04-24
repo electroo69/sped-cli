@@ -174,9 +174,12 @@ function setup() {
     }
   }
 
+  // Always create .sped-cli/ reference folder
+  createSpedCliFolder();
+
   console.log("");
   if (installed > 0) {
-    console.log(`  ✨ Installed ${installed} skill file(s). Your AI agents now know all 242 sped-cli commands.\n`);
+    console.log(`  ✨ Installed ${installed} skill file(s). Your AI agents now know all 282 sped-cli commands.\n`);
   } else if (skipped > 0) {
     console.log(`  No new files installed (${skipped} already exist). Use --force to overwrite.\n`);
   } else {
@@ -191,4 +194,59 @@ function setup() {
   }
 }
 
+function createSpedCliFolder() {
+  const spedDir = path.join(process.cwd(), ".sped-cli");
+  fs.mkdirSync(spedDir, { recursive: true });
+
+  // 1. Copy aliases.json
+  const aliasesSrc = path.join(__dirname, "..", "defaults", "aliases.json");
+  fs.copyFileSync(aliasesSrc, path.join(spedDir, "aliases.json"));
+
+  // 2. Copy skill reference
+  const skillSrc = path.join(SKILLS_DIR, "AGENTS.md");
+  fs.copyFileSync(skillSrc, path.join(spedDir, "SKILL_REFERENCE.md"));
+
+  // 3. Generate docs
+  const aliases = JSON.parse(fs.readFileSync(aliasesSrc, "utf8"));
+  const docLines = [
+    "# sped-cli Command Reference",
+    "",
+    `> ${Object.keys(aliases).length} aliases · v${require("../package.json").version}`,
+    "",
+    "## How to use",
+    "Each alias below is a standalone command. Type it directly in terminal.",
+    "Use `--dry` to preview, `--explain` to see what it does.",
+    "",
+    "## Alias → Command Mapping",
+    "",
+    "| Alias | Expands To |",
+    "|-------|-----------|",
+  ];
+  for (const [alias, cmd] of Object.entries(aliases)) {
+    docLines.push(`| \`${alias}\` | \`${cmd}\` |`);
+  }
+  docLines.push("");
+  docLines.push("## Quick Lookup Examples");
+  docLines.push("");
+  docLines.push("```bash");
+  docLines.push("# Read this file to find any alias:");
+  docLines.push("# cat .sped-cli/aliases.json | grep 'next'");
+  docLines.push("# cat .sped-cli/DOCS.md");
+  docLines.push("#");
+  docLines.push("# Common workflows:");
+  docLines.push("# nxa my-app     → npx create-next-app@latest my-app");
+  docLines.push("# ni             → npm install");
+  docLines.push("# dev            → start dev server");
+  docLines.push("# gs; ga; gc msg → git status, add, commit");
+  docLines.push("# sbi; sbs      → supabase init, start");
+  docLines.push("# pri; prm init → prisma init, migrate");
+  docLines.push("```");
+  docLines.push("");
+
+  fs.writeFileSync(path.join(spedDir, "DOCS.md"), docLines.join("\n"), "utf8");
+
+  console.log("  📁 .sped-cli/ — aliases.json + SKILL_REFERENCE.md + DOCS.md");
+}
+
 setup();
+

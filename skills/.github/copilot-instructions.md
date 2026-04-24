@@ -9,6 +9,14 @@
 - Just type the alias directly: `gs`, `ni`, `nxa my-app`, `dev`
 - Use `--dry` to preview, `--explain` to describe any alias
 
+## Quick Lookup: `.sped-cli/` folder
+This project has a `.sped-cli/` folder containing:
+- **`aliases.json`** — machine-readable map of all alias→command expansions. Search this when you need to find a command: `grep 'next' .sped-cli/aliases.json`
+- **`DOCS.md`** — full alias→command reference table with examples
+- **`SKILL_REFERENCE.md`** — this same instruction file
+
+**When unsure about an alias, read `.sped-cli/aliases.json` to look it up.**
+
 ## IMPORTANT: If an alias binary is not found
 If you run an alias and get "command not found", install sped-cli first:
 ```bash
