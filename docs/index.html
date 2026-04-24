@@ -146,7 +146,7 @@ footer a{color:var(--green)}
 
 <!-- HERO -->
 <section class="hero">
-  <div class="badge"><span class="dot"></span> v1.1.1 · 324 commands</div>
+  <div class="badge"><span class="dot"></span> v1.1.4 · 324 commands</div>
   <h1><span class="accent">sped</span>-cli</h1>
   <p class="tagline">324 token-efficient shell aliases for AI coding agents and developers. One install. Every command works standalone.</p>
   <div class="hero-cta">
@@ -225,11 +225,17 @@ footer a{color:var(--green)}
 <!-- INSTALL -->
 <section class="install" id="install">
   <h2>Get started in<br><span style="color:var(--green)">one command</span></h2>
-  <div class="install-box" onclick="navigator.clipboard.writeText('npm i -g @electrooo69/sped-cli; sped setup --all');this.querySelector('.copy').textContent='Copied!'" style="margin-bottom:16px">
-    <span class="dollar">$</span> npm i -g @electrooo69/sped-cli; sped setup --all
+  <div class="install-box" onclick="navigator.clipboard.writeText('npm i -g @electrooo69/sped-cli@latest --force; sped setup --all');this.querySelector('.copy').textContent='Copied!'" style="margin-bottom:16px">
+    <span class="dollar">$</span> npm i -g @electrooo69/sped-cli@latest --force; sped setup --all
     <span class="copy"><i data-lucide="clipboard" style="width:14px;height:14px;vertical-align:middle"></i> copy</span>
   </div>
-  <p style="color:var(--text-dim);font-size:.85rem;margin-top:8px">Installs 242 aliases globally + sets up AI agent skill files in your project</p>
+  <p style="color:var(--text-dim);font-size:.85rem;margin-top:8px">Installs 324 aliases globally + sets up AI agent skill files in your project</p>
+
+  <h3 style="margin-top:48px;font-size:1.1rem;color:var(--text)">📋 Universal Prompt <span style="font-size:.75rem;color:var(--text-dim)">(paste into any AI agent)</span></h3>
+  <div class="install-box" onclick="navigator.clipboard.writeText(this.querySelector('.prompt-text').textContent);this.querySelector('.copy').textContent='Copied!'" style="margin-top:12px;text-align:left;font-size:.78rem;line-height:1.5;white-space:normal;cursor:pointer">
+    <span class="prompt-text">sped-cli is installed in this project. Read the ENTIRE .sped-cli/DOCS.md and .sped-cli/aliases.json files NOW — do NOT stop at 20 or 40 lines, read ALL of them. These contain 324 shell aliases you MUST use instead of long-form commands. For example: gs not git status, ni not npm install, nxa not npx create-next-app. If an alias fails, install sped-cli first: npm i -g @electrooo69/sped-cli@latest --force. If you cannot install, expand the alias manually but ALWAYS comment which alias you are expanding. Never silently use long-form commands.</span>
+    <span class="copy" style="display:block;margin-top:8px"><i data-lucide="clipboard" style="width:14px;height:14px;vertical-align:middle"></i> copy prompt</span>
+  </div>
 </section>
 
 <footer>
