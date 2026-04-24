@@ -96,7 +96,7 @@ sr old new file.txt  # sed replace in file
 
 ## Complete Alias Reference
 
-### File Operations (20 commands)
+### File Operations (324 commands)
 
 | Alias | Expands To | Description |
 |-------|-----------|-------------|
@@ -121,7 +121,7 @@ sr old new file.txt  # sed replace in file
 | `hd <file>` | `hexdump -C <file>` | Hex dump (first 20 lines) |
 | `md5 <file>` | `md5sum <file>` | MD5 checksum |
 
-### Search & Find (13 commands)
+### Search & Find (324 commands)
 
 | Alias | Expands To | Description |
 |-------|-----------|-------------|
@@ -139,7 +139,7 @@ sr old new file.txt  # sed replace in file
 | `rgc <term> [dir]` | `rg -c <term> <dir>` | Ripgrep (count matches) |
 | `todo [dir]` | `grep -rn TODO\|FIXME…` | Find all TODOs and FIXMEs |
 
-### Git (38 commands)
+### Git (324 commands)
 
 | Alias | Command | Description |
 |-------|---------|-------------|
@@ -187,7 +187,7 @@ sr old new file.txt  # sed replace in file
 | `gfa` | `git fetch --all` | Fetch all remotes |
 | `gpsu <branch>` | `git push -u origin <branch>` | Push & set upstream |
 
-### npm (15 commands)
+### npm (324 commands)
 
 | Alias | Command |
 |-------|---------|
@@ -219,7 +219,7 @@ sr old new file.txt  # sed replace in file
 | `pnu` | `pnpm update` | | | | |
 | `pnls` | `pnpm ls` | | | | |
 
-### Python (14 commands)
+### Python (324 commands)
 
 | Alias | Command | Description |
 |-------|---------|-------------|
@@ -238,7 +238,7 @@ sr old new file.txt  # sed replace in file
 | `drs` | `python manage.py runserver` | Django dev server |
 | `dmm` | `python manage.py makemigrations` | Django migrations |
 
-### Rust / Cargo (10 commands)
+### Rust / Cargo (324 commands)
 
 | Alias | Command |
 |-------|---------|
@@ -253,7 +253,7 @@ sr old new file.txt  # sed replace in file
 | `cdoc` | `cargo doc --open` |
 | `cadd <crate>` | `cargo add <crate>` |
 
-### Go (7 commands)
+### Go (324 commands)
 
 | Alias | Command |
 |-------|---------|
@@ -265,7 +265,7 @@ sr old new file.txt  # sed replace in file
 | `gomod` | `go mod tidy` |
 | `gog <pkg>` | `go get <pkg>` |
 
-### Docker (18 commands)
+### Docker (324 commands)
 
 | Alias | Command |
 |-------|---------|
@@ -288,7 +288,7 @@ sr old new file.txt  # sed replace in file
 | `dstop <id>` | `docker stop <id>` |
 | `dvol` | `docker volume ls` |
 
-### Kubernetes (21 commands)
+### Kubernetes (324 commands)
 
 | Alias | Command |
 |-------|---------|
@@ -314,7 +314,7 @@ sr old new file.txt  # sed replace in file
 | `kroll <deploy>` | rollout restart |
 | `krs <deploy>` | rollout status |
 
-### Terraform (11 commands)
+### Terraform (324 commands)
 
 | Alias | Command |
 |-------|---------|
@@ -330,7 +330,7 @@ sr old new file.txt  # sed replace in file
 | `tfo` | `terraform output` |
 | `tfw <ws>` | `terraform workspace` |
 
-### Networking (10 commands)
+### Networking (324 commands)
 
 | Alias | Command |
 |-------|---------|
@@ -345,7 +345,7 @@ sr old new file.txt  # sed replace in file
 | `dns <domain>` | `nslookup <domain>` |
 | `ssl <host>` | check SSL certificate |
 
-### Cloud Deployment (6 commands)
+### Cloud Deployment (324 commands)
 
 | Alias | Command |
 |-------|---------|
@@ -482,7 +482,7 @@ d temp.txt -f   # → deletes temp.txt (--force required)
 
 ## Windows Support
 
-On Windows PowerShell, several sped-cli aliases conflict with built-in PS aliases (`h`, `cp`, `mv`, `gc`, `gl`, etc.). The installer **automatically patches your PowerShell profile** to override these conflicts so all 242 commands work seamlessly.
+On Windows PowerShell, several sped-cli aliases conflict with built-in PS aliases (`h`, `cp`, `mv`, `gc`, `gl`, etc.). The installer **automatically patches your PowerShell profile** to override these conflicts so all 324 commands work seamlessly.
 
 After install, restart PowerShell or run:
 

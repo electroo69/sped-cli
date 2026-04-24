@@ -357,7 +357,8 @@
   "scripts": {
     "prepare": "node scripts/generate-alias-bins.js",
     "postinstall": "node scripts/postinstall.js",
-    "test": "node test/core.test.js"
+    "test": "node test/core.test.js",
+    "sync": "node scripts/sync-version.js"
   },
   "pkg": {
     "assets": [
