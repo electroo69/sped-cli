@@ -127,7 +127,7 @@ function parseInvocation(argv) {
       continue;
     }
 
-    if (part === "--force" || part === "-f" || part === "--yes") {
+    if (part === "--force" || part === "-f") {
       flags.deleteConfirmed = true;
       continue;
     }

@@ -9,6 +9,18 @@
 - Just type the alias directly: `gs`, `ni`, `nxa my-app`, `dev`
 - Use `--dry` to preview, `--explain` to describe any alias
 
+## IMPORTANT: If an alias binary is not found
+If you run an alias and get "command not found", install sped-cli first:
+```bash
+npm i -g @electrooo69/sped-cli
+```
+If you CANNOT install globally (sandbox/restricted environment), expand the alias manually using the reference table below. You must STILL think in terms of sped-cli aliases and comment what alias you're expanding:
+```bash
+# sped: nxa my-app (alias not available, expanding manually)
+npx create-next-app@latest my-app
+```
+**Never silently switch to long-form commands. Always reference the alias.**
+
 ## Common Workflow Examples
 
 **Create a Next.js app and start dev:**
