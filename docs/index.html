@@ -155,8 +155,8 @@ footer a{color:var(--green)}
     <a href="https://github.com/electroo69/sped-cli" class="btn btn-ghost" target="_blank"><i data-lucide="star" style="width:16px;height:16px"></i> GitHub</a>
   </div>
   <div class="hero-install" style="margin-top:32px">
-    <div class="install-box" onclick="navigator.clipboard.writeText('npm i -g @electrooo69/sped-cli; sped setup --all');this.querySelector('.copy').textContent='Copied!'">
-      <span class="dollar">$</span> npm i -g @electrooo69/sped-cli; sped setup --all
+    <div class="install-box" onclick="navigator.clipboard.writeText('npm i -g @electrooo69/sped-cli');this.querySelector('.copy').textContent='Copied!'">
+      <span class="dollar">$</span> npm i -g @electrooo69/sped-cli
       <span class="copy"><i data-lucide="clipboard" style="width:14px;height:14px;vertical-align:middle"></i> copy</span>
     </div>
   </div>
@@ -224,14 +224,15 @@ footer a{color:var(--green)}
 
 <!-- INSTALL -->
 <section class="install" id="install">
-  <h2>Get started in<br><span style="color:var(--green)">one command</span></h2>
-  <div class="install-box" onclick="navigator.clipboard.writeText('npm i -g @electrooo69/sped-cli@latest --force; sped setup --all');this.querySelector('.copy').textContent='Copied!'" style="margin-bottom:16px">
-    <span class="dollar">$</span> npm i -g @electrooo69/sped-cli@latest --force; sped setup --all
+  <h2>Get started in<br><span style="color:var(--green)">two steps</span></h2>
+  <h3 style="margin-top:8px;font-size:1.1rem;color:var(--text)">Step 1: <code style="color:var(--green)">npm i -g @electrooo69/sped-cli</code></h3>
+  <div class="install-box" onclick="navigator.clipboard.writeText('npm i -g @electrooo69/sped-cli');this.querySelector('.copy').textContent='Copied!'" style="margin-top:12px;margin-bottom:16px">
+    <span class="dollar">$</span> npm i -g @electrooo69/sped-cli
     <span class="copy"><i data-lucide="clipboard" style="width:14px;height:14px;vertical-align:middle"></i> copy</span>
   </div>
-  <p style="color:var(--text-dim);font-size:.85rem;margin-top:8px">Installs 324 aliases globally + sets up AI agent skill files in your project</p>
+  <p style="color:var(--text-dim);font-size:.85rem;margin-top:8px">Installs 324 aliases globally.</p>
 
-  <h3 style="margin-top:48px;font-size:1.1rem;color:var(--text)">📋 Universal Prompt <span style="font-size:.75rem;color:var(--text-dim)">(paste into any AI agent)</span></h3>
+  <h3 style="margin-top:48px;font-size:1.1rem;color:var(--text)">Step 2: Universal Prompt <span style="font-size:.75rem;color:var(--text-dim)">(paste into any AI agent)</span></h3>
   <div class="install-box" onclick="navigator.clipboard.writeText(this.querySelector('.prompt-text').textContent);this.querySelector('.copy').textContent='Copied!'" style="margin-top:12px;text-align:left;font-size:.78rem;line-height:1.5;white-space:normal;cursor:pointer">
     <span class="prompt-text" style="white-space:pre-line">Setup once per project: install with `npm i -g @electrooo69/sped-cli@latest --force`, then run `sped setup --all` in the project root if `.sped-cli/` is missing.
 Never delete `.sped-cli/`.
