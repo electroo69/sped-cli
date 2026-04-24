@@ -258,5 +258,53 @@
   "ts": "date +%s",
   "now": "date",
   "cal": "cal",
-  "alias": "alias {{1}}"
+  "alias": "alias {{1}}",
+
+  "nxa": "npx create-next-app@latest {{1}}",
+  "nxd": "next dev",
+  "nxb": "next build",
+  "nxs": "next start",
+  "nxl": "next lint",
+
+  "via": "npm create vite@latest {{1}}",
+  "vid": "vite",
+  "vib": "vite build",
+  "vip": "vite preview",
+
+  "nga": "npx @angular/cli new {{1}}",
+  "ngs": "ng serve",
+  "ngb": "ng build",
+  "ngt": "ng test",
+  "ngg": "ng generate {{1}}",
+  "ngc": "ng generate component {{1}}",
+
+  "sbi": "supabase init",
+  "sbs": "supabase start",
+  "sbst": "supabase stop",
+  "sbp": "supabase db push",
+  "sbr": "supabase db reset",
+  "sbm": "supabase migration new {{1}}",
+  "sbt": "supabase gen types typescript --local",
+  "sbf": "supabase functions serve {{1}}",
+
+  "pri": "npx prisma init",
+  "prg": "npx prisma generate",
+  "prp": "npx prisma db push",
+  "prm": "npx prisma migrate dev --name {{1}}",
+  "prs": "npx prisma studio",
+  "prd": "npx prisma db seed",
+
+  "asa": "npm create astro@latest {{1}}",
+  "asd": "astro dev",
+  "asb": "astro build",
+  "asp": "astro preview",
+
+  "exa": "npx create-expo-app@latest {{1}}",
+  "exs": "expo start",
+  "exd": "expo start --dev-client",
+  "exi": "expo install {{1}}",
+
+  "twi": "npx tailwindcss init",
+  "dri": "npx drizzle-kit generate",
+  "drp": "npx drizzle-kit push"
 }

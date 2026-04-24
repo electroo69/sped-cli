@@ -1,109 +1,145 @@
-# sped-cli — Agent Shell Command Reference
+# MANDATORY: sped-cli Shell Alias Rules
 
-This project uses `sped-cli` (v0.1.0) for all shell operations. sped-cli provides 242 token-efficient aliases that replace long shell commands with 1-4 character shortcuts.
+> **RULE: You MUST use sped-cli aliases for ALL shell commands in this project. NEVER write long-form commands.**
+> This applies to EVERY shell interaction — git, npm, file ops, framework CLIs, everything.
+> Violations: `git status` ❌ → `gs` ✅ | `npm install` ❌ → `ni` ✅ | `npx create-next-app` ❌ → `nxa` ✅
 
-**Every alias is a standalone command. Do not prefix with `sped`.**
+## How It Works
+- sped-cli is installed globally. Every alias is a standalone binary — no prefix needed.
+- Just type the alias directly: `gs`, `ni`, `nxa my-app`, `dev`
+- Use `--dry` to preview, `--explain` to describe any alias
 
-## Setup
-- Install: `npm install -g sped-cli`
-- Config: `sped init` creates `sped.config.json`
-- List aliases: `sped ls`
+## Common Workflow Examples
 
-## Flags
-- `--dry` — preview without executing
-- `--explain` — describe the command
-- `-f` / `--force` — confirm destructive ops
+**Create a Next.js app and start dev:**
+```bash
+nxa my-app    # npx create-next-app@latest my-app
+ni            # npm install
+dev           # start dev server
+```
 
-## Conventions
-- Always use sped aliases instead of full shell commands
-- Prefer `gs` over `git status`, `ni` over `npm install`
-- Use `--dry` before destructive operations
-- Use `todo` to find code annotations
+**Create a Vite app:**
+```bash
+via my-app    # npm create vite@latest my-app
+ni            # npm install
+dev           # start dev server
+```
 
-## Complete Alias Reference (242 commands)
+**Git workflow:**
+```bash
+gs            # git status
+ga            # git add .
+gc "message"  # git commit -m "message"
+gp            # git push
+```
 
-- `h` → `head -n {{2|50}} {{1}}`
-- `t` → `tail -n {{2|50}} {{1}}`
-- `l` → `cat -n {{1}}`
-- `v` → `less {{1}}`
-- `e` → `$EDITOR {{1}}`
-- `w` → `write {{1}} {{2}}`
-- `a` → `append {{1}} {{2}}`
-- `x` → `test -e {{1}}`
-- `i` → `stat {{1}}`
-- `d` → `rm {{1}}`
-- `cp` → `cp {{1}} {{2}}`
-- `mv` → `mv {{1}} {{2}}`
-- `cat` → `cat {{1}}`
-- `touch` → `touch {{1}}`
-- `wc` → `wc -l {{1}}`
-- `sz` → `du -sh {{1|.}}`
-- `ch` → `chmod +x {{1}}`
-- `ln` → `ln -s {{1}} {{2}}`
-- `hd` → `hexdump -C {{1}} | head -20`
-- `md5` → `md5sum {{1}}`
-- `sf` → `find . -name {{1}}`
-- `sg` → `grep -rn {{1}} {{2|.}}`
-- `sl` → `grep -rn {{1}} {{2}}`
-- `si` → `grep -rn import {{1}} .`
-- `sc` → `grep -rn {{1}} .`
-- `sr` → `sed -i s/{{1}}/{{2}}/g {{3}}`
-- `rg` → `rg {{1}} {{2|.}}`
-- `rgf` → `rg -l {{1}} {{2|.}}`
-- `rgc` → `rg -c {{1}} {{2|.}}`
-- `todo` → `grep -rn TODO\|FIXME\|HACK\|XXX {{1|.}}`
-- `sft` → `find . -name *.{{1}}`
-- `sfe` → `find . -name {{1}} -exec {{2}} {} ;`
-- `sfs` → `find . -type f -size +{{1}}`
+**Supabase setup:**
+```bash
+sbi           # supabase init
+sbs           # supabase start
+sbm add_users # supabase migration new add_users
+sbp           # supabase db push
+sbt           # supabase gen types typescript --local
+```
+
+**Prisma workflow:**
+```bash
+pri           # npx prisma init
+prm init      # npx prisma migrate dev --name init
+prg           # npx prisma generate
+prs           # npx prisma studio
+```
+
+## Complete Alias Reference (282 commands)
+
+### File Operations (20)
+- `h <file> [n]` → `head -n {n|50} <file>`
+- `t <file> [n]` → `tail -n {n|50} <file>`
+- `l <file>` → `cat -n <file>`
+- `v <file>` → `less <file>`
+- `e <file>` → `$EDITOR <file>`
+- `w <file> <text>` → write content
+- `a <file> <text>` → append content
+- `x <file>` → `test -e <file>`
+- `i <file>` → `stat <file>`
+- `d <file>` → `rm <file>`
+- `cp <src> <dst>` → copy
+- `mv <src> <dst>` → move/rename
+- `cat <file>` → print file
+- `touch <file>` → create file
+- `wc <file>` → count lines
+- `sz [path]` → `du -sh`
+- `ch <file>` → `chmod +x`
+- `ln <src> <dst>` → symlink
+- `hd <file>` → hex dump
+- `md5 <file>` → checksum
+
+### Search (13)
+- `sf <pattern>` → `find . -name <pattern>`
+- `sg <term> [dir]` → `grep -rn <term>`
+- `sl <term> <dir>` → grep in dir
+- `si <term>` → search imports
+- `sc <term>` → search code
+- `sr <old> <new> <file>` → sed replace
+- `rg <term>` → ripgrep
+- `rgf <term>` → ripgrep filenames
+- `rgc <term>` → ripgrep count
+- `todo` → find TODO/FIXME/HACK/XXX
+- `sft <ext>` → find by extension
+- `sfe <name> <cmd>` → find + exec
+- `sfs <size>` → find by size
+
+### Git (42)
 - `gs` → `git status`
 - `ga` → `git add .`
-- `gaf` → `git add {{1}}`
-- `gc` → `git commit -m {{1}}`
-- `gca` → `git commit -am {{1}}`
+- `gaf <file>` → `git add <file>`
+- `gc <msg>` → `git commit -m`
+- `gca <msg>` → `git commit -am`
 - `gp` → `git push`
 - `gpf` → `git push --force-with-lease`
 - `gpl` → `git pull`
+- `gpr` → `git pull --rebase`
 - `gd` → `git diff`
 - `gds` → `git diff --staged`
-- `gdf` → `git diff {{1}}`
-- `gco` → `git checkout {{1}}`
-- `gcb` → `git checkout -b {{1}}`
-- `gb` → `git branch`
-- `gba` → `git branch -a`
-- `gbd` → `git branch -d {{1}}`
-- `gbD` → `git branch -D {{1}}`
+- `gdf <file>` → diff file
+- `gco <branch>` → checkout
+- `gcb <name>` → checkout -b
+- `gb` → branches
+- `gba` → all branches
+- `gbd <name>` → delete branch
 - `gl` → `git log --oneline -10`
-- `glg` → `git log --oneline --graph --all -20`
-- `gla` → `git log --oneline --all -20`
-- `grl` → `git reflog -10`
-- `gst` → `git stash`
-- `gstp` → `git stash pop`
-- `gstl` → `git stash list`
-- `grs` → `git restore {{1}}`
-- `grss` → `git restore --staged {{1}}`
-- `gra` → `git restore .`
-- `gm` → `git merge {{1}}`
-- `grb` → `git rebase {{1}}`
-- `grbi` → `git rebase -i {{1}}`
-- `gcl` → `git clone {{1}}`
-- `gbl` → `git blame {{1}}`
-- `gtag` → `git tag {{1}}`
-- `gcp` → `git cherry-pick {{1}}`
-- `grv` → `git revert {{1}}`
-- `gsh` → `git show {{1}}`
-- `grh` → `git reset HEAD {{1}}`
-- `grhh` → `git reset --hard HEAD`
-- `gcn` → `git clean -fd`
-- `gf` → `git fetch`
-- `gfa` → `git fetch --all`
-- `gpsu` → `git push -u origin {{1}}`
-- `gpr` → `git pull --rebase`
+- `glg` → graph log
+- `gla` → all log
+- `grl` → reflog
+- `gst` → stash
+- `gstp` → stash pop
+- `gstl` → stash list
+- `grs <file>` → restore
+- `grss <file>` → unstage
+- `gra` → restore all
+- `gm <branch>` → merge
+- `grb <branch>` → rebase
+- `grbi <ref>` → interactive rebase
+- `gcl <url>` → clone
+- `gbl <file>` → blame
+- `gtag <name>` → tag
+- `gcp <hash>` → cherry-pick
+- `grv <hash>` → revert
+- `gsh <ref>` → show
+- `grh <ref>` → reset HEAD
+- `grhh` → reset --hard HEAD
+- `gcn` → clean -fd
+- `gf` → fetch
+- `gfa` → fetch all
+- `gpsu <branch>` → push -u origin
+
+### npm (15) · pnpm (7) · yarn (5) · bun (5)
 - `ni` → `npm install`
-- `nid` → `npm install {{1}}`
-- `nidd` → `npm install -D {{1}}`
-- `nig` → `npm install -g {{1}}`
-- `nun` → `npm uninstall {{1}}`
-- `nr` → `npm run {{1}}`
+- `nid <pkg>` → `npm install <pkg>`
+- `nidd <pkg>` → `npm install -D`
+- `nig <pkg>` → `npm install -g`
+- `nun <pkg>` → `npm uninstall`
+- `nr <script>` → `npm run`
 - `nu` → `npm update`
 - `nc` → `npm ci`
 - `nls` → `npm ls --depth=0`
@@ -111,156 +147,113 @@ This project uses `sped-cli` (v0.1.0) for all shell operations. sped-cli provide
 - `na` → `npm audit`
 - `naf` → `npm audit fix`
 - `np` → `npm publish`
-- `npx` → `npx {{1}}`
-- `nd` → `node {{1}}`
+- `npx <cmd>` → `npx`
+- `nd <file>` → `node`
 - `pni` → `pnpm install`
-- `pna` → `pnpm add {{1}}`
-- `pnad` → `pnpm add -D {{1}}`
-- `pnr` → `pnpm run {{1}}`
-- `pnx` → `pnpm exec {{1}}`
+- `pna <pkg>` → `pnpm add`
+- `pnad <pkg>` → `pnpm add -D`
+- `pnr <script>` → `pnpm run`
+- `pnx <cmd>` → `pnpm exec`
 - `pnu` → `pnpm update`
 - `pnls` → `pnpm ls`
 - `yi` → `yarn install`
-- `ya` → `yarn add {{1}}`
-- `yad` → `yarn add -D {{1}}`
-- `yr` → `yarn run {{1}}`
+- `ya <pkg>` → `yarn add`
+- `yad <pkg>` → `yarn add -D`
+- `yr <script>` → `yarn run`
 - `yu` → `yarn upgrade`
 - `bi` → `bun install`
-- `ba` → `bun add {{1}}`
-- `bad` → `bun add -d {{1}}`
-- `br` → `bun run {{1}}`
-- `bx` → `bunx {{1}}`
-- `py` → `python3 {{1}}`
-- `py2` → `python {{1}}`
-- `pi` → `pip install {{1}}`
-- `pir` → `pip install -r requirements.txt`
-- `pf` → `pip freeze`
-- `pfr` → `pip freeze > requirements.txt`
-- `pun` → `pip uninstall {{1}}`
-- `venv` → `python3 -m venv .venv`
-- `act` → `source .venv/bin/activate`
-- `pt` → `pytest`
-- `ptv` → `pytest -v`
-- `ptc` → `pytest --cov`
-- `dj` → `python manage.py {{1}}`
-- `drs` → `python manage.py runserver`
-- `dmm` → `python manage.py makemigrations`
-- `dm` → `python manage.py migrate`
-- `cb` → `cargo build`
-- `cbr` → `cargo build --release`
-- `cr` → `cargo run`
-- `crr` → `cargo run --release`
-- `ct` → `cargo test`
-- `cc` → `cargo check`
-- `ccl` → `cargo clippy`
-- `cf` → `cargo fmt`
-- `cdoc` → `cargo doc --open`
-- `cadd` → `cargo add {{1}}`
-- `gor` → `go run .`
-- `gob` → `go build`
-- `got` → `go test -v ./...`
-- `gotc` → `go test -v -cover ./...`
-- `gof` → `go fmt ./...`
-- `gomod` → `go mod tidy`
-- `gog` → `go get {{1}}`
-- `tu` → `unit tests`
-- `tc` → `test coverage`
-- `lint` → `lint`
-- `fix` → `lint --fix`
-- `fmt` → `format`
-- `b` → `build`
-- `dev` → `dev server`
-- `check` → `lint + types + test`
-- `dc` → `docker compose {{1}}`
-- `dcu` → `docker compose up -d`
-- `dcd` → `docker compose down`
-- `dcl` → `docker compose logs -f {{1}}`
-- `dcr` → `docker compose restart {{1}}`
-- `dcb` → `docker compose build`
-- `dps` → `docker ps`
-- `dpa` → `docker ps -a`
-- `di` → `docker images`
-- `dex` → `docker exec -it {{1}} /bin/bash`
-- `dlog` → `docker logs -f {{1}}`
-- `drm` → `docker rm {{1}}`
-- `drmi` → `docker rmi {{1}}`
-- `dpr` → `docker system prune -af`
-- `db` → `docker build -t {{1}} .`
-- `drun` → `docker run -it {{1}}`
-- `dstop` → `docker stop {{1}}`
-- `dvol` → `docker volume ls`
-- `k` → `kubectl {{1}}`
-- `kgp` → `kubectl get pods`
-- `kga` → `kubectl get all`
-- `kgs` → `kubectl get svc`
-- `kgd` → `kubectl get deployments`
-- `kgn` → `kubectl get nodes`
-- `kgi` → `kubectl get ingress`
-- `kgns` → `kubectl get namespaces`
-- `kd` → `kubectl describe {{1}}`
-- `kl` → `kubectl logs -f {{1}}`
-- `kex` → `kubectl exec -it {{1}} -- /bin/bash`
-- `kaf` → `kubectl apply -f {{1}}`
-- `kdf` → `kubectl delete -f {{1}}`
-- `kns` → `kubectl config set-context --current --namespace {{1}}`
-- `kctx` → `kubectl config current-context`
-- `ksc` → `kubectl scale {{1}} --replicas={{2}}`
-- `kpf` → `kubectl port-forward {{1}} {{2}}`
-- `ktp` → `kubectl top pods`
-- `ktn` → `kubectl top nodes`
-- `kroll` → `kubectl rollout restart {{1}}`
-- `krs` → `kubectl rollout status {{1}}`
-- `tf` → `terraform {{1}}`
-- `tfi` → `terraform init`
-- `tfp` → `terraform plan`
-- `tfa` → `terraform apply`
-- `tfaa` → `terraform apply -auto-approve`
-- `tfd` → `terraform destroy`
-- `tfs` → `terraform state list`
-- `tff` → `terraform fmt`
-- `tfv` → `terraform validate`
-- `tfo` → `terraform output`
-- `tfw` → `terraform workspace {{1}}`
-- `cur` → `curl -s {{1}}`
-- `curj` → `curl -s -H Content-Type:application/json {{1}}`
-- `curp` → `curl -s -X POST {{1}}`
-- `curf` → `curl -sL -o {{2}} {{1}}`
-- `wgt` → `wget {{1}}`
-- `ping` → `ping -c 4 {{1}}`
-- `port` → `lsof -i :{{1}}`
-- `myip` → `curl -s ifconfig.me`
-- `dns` → `nslookup {{1}}`
-- `ssl` → `openssl s_client -connect {{1}}:443`
-- `tgz` → `tar -czvf {{1}}.tar.gz {{1}}`
-- `untgz` → `tar -xzvf {{1}}`
-- `zipc` → `zip -r {{1}}.zip {{1}}`
-- `unzipc` → `unzip {{1}}`
-- `sshi` → `ssh {{1}}`
-- `scpu` → `scp {{1}} {{2}}`
-- `scpd` → `scp {{2}} {{1}}`
-- `vdep` → `vercel deploy`
-- `vprod` → `vercel --prod`
-- `ndep` → `netlify deploy --prod`
-- `fdep` → `firebase deploy`
-- `sdep` → `supabase functions deploy {{1}}`
-- `rup` → `railway up`
-- `cls` → `clear`
-- `la` → `ls -la`
-- `lt` → `tree . -L 3`
-- `ll` → `ls -lah`
-- `up` → `cd ..`
-- `up2` → `cd ../..`
-- `up3` → `cd ../../..`
-- `mk` → `mkdir -p {{1}}`
-- `hist` → `history`
-- `path` → `echo $PATH`
-- `env` → `printenv`
-- `evar` → `echo ${{1}}`
-- `src` → `source {{1}}`
-- `xarg` → `xargs {{1}}`
-- `diff2` → `diff {{1}} {{2}}`
-- `watch` → `watch -n {{2|2}} {{1}}`
-- `ts` → `date +%s`
-- `now` → `date`
-- `cal` → `cal`
-- `alias` → `alias {{1}}`
+- `ba <pkg>` → `bun add`
+- `bad <pkg>` → `bun add -d`
+- `br <script>` → `bun run`
+- `bx <cmd>` → `bunx`
+
+### Smart Lifecycle (auto-detects package manager)
+- `dev` → start dev server
+- `b` → build
+- `lint` → run linter
+- `fix` → lint --fix
+- `fmt` → format
+- `tu` → unit tests
+- `tc` → test coverage
+- `check` → lint + types + test
+
+### Next.js (5)
+- `nxa <name>` → `npx create-next-app@latest`
+- `nxd` → `next dev`
+- `nxb` → `next build`
+- `nxs` → `next start`
+- `nxl` → `next lint`
+
+### Vite (4)
+- `via <name>` → `npm create vite@latest`
+- `vid` → `vite`
+- `vib` → `vite build`
+- `vip` → `vite preview`
+
+### Angular (6)
+- `nga <name>` → `npx @angular/cli new`
+- `ngs` → `ng serve`
+- `ngb` → `ng build`
+- `ngt` → `ng test`
+- `ngg <type>` → `ng generate`
+- `ngc <name>` → `ng generate component`
+
+### Supabase (8)
+- `sbi` → `supabase init`
+- `sbs` → `supabase start`
+- `sbst` → `supabase stop`
+- `sbp` → `supabase db push`
+- `sbr` → `supabase db reset`
+- `sbm <name>` → `supabase migration new`
+- `sbt` → `supabase gen types typescript --local`
+- `sbf <name>` → `supabase functions serve`
+
+### Prisma (6)
+- `pri` → `npx prisma init`
+- `prg` → `npx prisma generate`
+- `prp` → `npx prisma db push`
+- `prm <name>` → `npx prisma migrate dev --name`
+- `prs` → `npx prisma studio`
+- `prd` → `npx prisma db seed`
+
+### Astro (4)
+- `asa <name>` → `npm create astro@latest`
+- `asd` → `astro dev`
+- `asb` → `astro build`
+- `asp` → `astro preview`
+
+### Expo / React Native (4)
+- `exa <name>` → `npx create-expo-app@latest`
+- `exs` → `expo start`
+- `exd` → `expo start --dev-client`
+- `exi <pkg>` → `expo install`
+
+### Tailwind / Drizzle (3)
+- `twi` → `npx tailwindcss init`
+- `dri` → `npx drizzle-kit generate`
+- `drp` → `npx drizzle-kit push`
+
+### Python (16)
+- `py` / `py2` / `pi` / `pir` / `pf` / `pfr` / `pun` / `venv` / `act` / `pt` / `ptv` / `ptc` / `dj` / `drs` / `dmm` / `dm`
+
+### Rust (10) · Go (7)
+- `cb` / `cbr` / `cr` / `crr` / `ct` / `cc` / `ccl` / `cf` / `cdoc` / `cadd`
+- `gor` / `gob` / `got` / `gotc` / `gof` / `gomod` / `gog`
+
+### Docker (18)
+- `dc` / `dcu` / `dcd` / `dcl` / `dcr` / `dcb` / `dps` / `dpa` / `di` / `dex` / `dlog` / `drm` / `drmi` / `dpr` / `db` / `drun` / `dstop` / `dvol`
+
+### Kubernetes (21)
+- `k` / `kgp` / `kga` / `kgs` / `kgd` / `kgn` / `kgi` / `kgns` / `kd` / `kl` / `kex` / `kaf` / `kdf` / `kns` / `kctx` / `ksc` / `kpf` / `ktp` / `ktn` / `kroll` / `krs`
+
+### Terraform (11)
+- `tf` / `tfi` / `tfp` / `tfa` / `tfaa` / `tfd` / `tfs` / `tff` / `tfv` / `tfo` / `tfw`
+
+### Networking (10)
+- `cur` / `curj` / `curp` / `curf` / `wgt` / `ping` / `port` / `myip` / `dns` / `ssl`
+
+### Deploy (6)
+- `vdep` / `vprod` / `ndep` / `fdep` / `sdep` / `rup`
+
+### System (20+)
+- `cls` / `la` / `lt` / `ll` / `up` / `up2` / `up3` / `mk` / `hist` / `path` / `env` / `evar` / `src` / `tgz` / `untgz` / `zipc` / `unzipc` / `sshi` / `scpu` / `scpd`
