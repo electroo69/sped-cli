@@ -66,5 +66,5 @@ test("run prints version for the sped-cli shim", async () => {
   });
 
   assert.equal(code, 0);
-  assert.equal(capture.output.trim(), "1.1.2");
+  assert.equal(capture.output.trim(), "1.1.3");
 });
