@@ -1,279 +1,85 @@
-# MANDATORY: sped-cli Shell Alias Rules
+# MANDATORY: sped-cli Shell Rules
 
-> **RULE: You MUST use sped-cli aliases for ALL shell commands in this project. NEVER write long-form commands.**
-> This applies to EVERY shell interaction — git, npm, file ops, framework CLIs, everything.
-> Violations: `git status` ❌ → `gs` ✅ | `npm install` ❌ → `ni` ✅ | `npx create-next-app` ❌ → `nxa` ✅
+**RULE: Use sped-cli aliases for ALL shell commands. NEVER use long-form.**
 
-## How It Works
-- sped-cli is installed globally. Every alias is a standalone binary — no prefix needed.
-- Just type the alias directly: `gs`, `ni`, `nxa my-app`, `dev`
-- Use `--dry` to preview, `--explain` to describe any alias
+## Setup
+- Aliases are standalone commands. No prefix needed: `gs`, `ni`, `nxa my-app`
+- Full reference: read `.sped-cli/aliases.json` (JSON) or `.sped-cli/DOCS.md` (table)
+- If alias fails: run `npm i -g @electrooo69/sped-cli@latest --force`
+- If you CANNOT install, expand manually with comment: `# sped: nxa my-app`
 
-## Quick Lookup: `.sped-cli/` folder
-This project has a `.sped-cli/` folder containing:
-- **`aliases.json`** — machine-readable map of all alias→command expansions. Search this when you need to find a command: `grep 'next' .sped-cli/aliases.json`
-- **`DOCS.md`** — full alias→command reference table with examples
-- **`SKILL_REFERENCE.md`** — this same instruction file
+**READ THE FULL `.sped-cli/aliases.json` FILE to look up any command you need.**
+**READ THE FULL `.sped-cli/DOCS.md` FILE for the complete alias→command reference table.**
+**DO NOT only read the first 20-40 lines. Read the ENTIRE files above for all 319 commands.**
 
-**When unsure about an alias, read `.sped-cli/aliases.json` to look it up.**
+## Most Used Aliases (memorize these)
 
-## IMPORTANT: If an alias binary is not found
-If you run an alias and get "command not found", install sped-cli first:
+| Git | Packages | Frameworks | Files |
+|-----|----------|------------|-------|
+| `gs` status | `ni` npm install | `nxa` create next | `h` head |
+| `ga` add all | `nid` install pkg | `via` create vite | `t` tail |
+| `gc` commit | `nidd` install -D | `nga` create angular | `l` cat -n |
+| `gp` push | `dev` start dev | `sva` create svelte | `sf` find |
+| `gpl` pull | `b` build | `vua` create vue | `sg` grep |
+| `gcb` new branch | `lint` linter | `nua` create nuxt | `todo` TODOs |
+| `gl` log | `tu` unit tests | `rma` create remix | `lt` tree |
+| `gd` diff | `check` all checks | `t3a` create t3 | `rg` ripgrep |
+
+## Framework Workflows
+
 ```bash
-npm i -g @electrooo69/sped-cli
-```
-If you CANNOT install globally (sandbox/restricted environment), expand the alias manually using the reference table below. You must STILL think in terms of sped-cli aliases and comment what alias you're expanding:
-```bash
-# sped: nxa my-app (alias not available, expanding manually)
-npx create-next-app@latest my-app
-```
-**Never silently switch to long-form commands. Always reference the alias.**
-
-## Common Workflow Examples
-
-**Create a Next.js app and start dev:**
-```bash
-nxa my-app    # npx create-next-app@latest my-app
-ni            # npm install
-dev           # start dev server
-```
-
-**Create a Vite app:**
-```bash
-via my-app    # npm create vite@latest my-app
-ni            # npm install
-dev           # start dev server
+# Next.js:     nxa my-app → ni → dev
+# Vite:        via my-app → ni → dev
+# Angular:     nga my-app → ni → ngs
+# Supabase:    sbi → sbs → sbm add_users → sbp → sbt
+# Prisma:      pri → prm init → prg → prs
+# Git:         gs → ga → gc "msg" → gp
+# Testing:     vit (vitest) · pwr (playwright) · tu (unit)
+# TypeScript:  tsc · tscw (watch) · tscn (noEmit)
+# Linting:     esl · eslf (fix) · bml (biome) · prt (prettier)
 ```
 
-**Git workflow:**
-```bash
-gs            # git status
-ga            # git add .
-gc "message"  # git commit -m "message"
-gp            # git push
-```
+## Full Reference (319 commands)
 
-**Supabase setup:**
-```bash
-sbi           # supabase init
-sbs           # supabase start
-sbm add_users # supabase migration new add_users
-sbp           # supabase db push
-sbt           # supabase gen types typescript --local
-```
+**For the complete alias list, read `.sped-cli/aliases.json`.**
 
-**Prisma workflow:**
-```bash
-pri           # npx prisma init
-prm init      # npx prisma migrate dev --name init
-prg           # npx prisma generate
-prs           # npx prisma studio
-```
+Below is a summary by category. For exact expansions, always check `.sped-cli/aliases.json`.
 
-## Complete Alias Reference (282 commands)
-
-### File Operations (20)
-- `h <file> [n]` → `head -n {n|50} <file>`
-- `t <file> [n]` → `tail -n {n|50} <file>`
-- `l <file>` → `cat -n <file>`
-- `v <file>` → `less <file>`
-- `e <file>` → `$EDITOR <file>`
-- `w <file> <text>` → write content
-- `a <file> <text>` → append content
-- `x <file>` → `test -e <file>`
-- `i <file>` → `stat <file>`
-- `d <file>` → `rm <file>`
-- `cp <src> <dst>` → copy
-- `mv <src> <dst>` → move/rename
-- `cat <file>` → print file
-- `touch <file>` → create file
-- `wc <file>` → count lines
-- `sz [path]` → `du -sh`
-- `ch <file>` → `chmod +x`
-- `ln <src> <dst>` → symlink
-- `hd <file>` → hex dump
-- `md5 <file>` → checksum
-
-### Search (13)
-- `sf <pattern>` → `find . -name <pattern>`
-- `sg <term> [dir]` → `grep -rn <term>`
-- `sl <term> <dir>` → grep in dir
-- `si <term>` → search imports
-- `sc <term>` → search code
-- `sr <old> <new> <file>` → sed replace
-- `rg <term>` → ripgrep
-- `rgf <term>` → ripgrep filenames
-- `rgc <term>` → ripgrep count
-- `todo` → find TODO/FIXME/HACK/XXX
-- `sft <ext>` → find by extension
-- `sfe <name> <cmd>` → find + exec
-- `sfs <size>` → find by size
-
-### Git (42)
-- `gs` → `git status`
-- `ga` → `git add .`
-- `gaf <file>` → `git add <file>`
-- `gc <msg>` → `git commit -m`
-- `gca <msg>` → `git commit -am`
-- `gp` → `git push`
-- `gpf` → `git push --force-with-lease`
-- `gpl` → `git pull`
-- `gpr` → `git pull --rebase`
-- `gd` → `git diff`
-- `gds` → `git diff --staged`
-- `gdf <file>` → diff file
-- `gco <branch>` → checkout
-- `gcb <name>` → checkout -b
-- `gb` → branches
-- `gba` → all branches
-- `gbd <name>` → delete branch
-- `gl` → `git log --oneline -10`
-- `glg` → graph log
-- `gla` → all log
-- `grl` → reflog
-- `gst` → stash
-- `gstp` → stash pop
-- `gstl` → stash list
-- `grs <file>` → restore
-- `grss <file>` → unstage
-- `gra` → restore all
-- `gm <branch>` → merge
-- `grb <branch>` → rebase
-- `grbi <ref>` → interactive rebase
-- `gcl <url>` → clone
-- `gbl <file>` → blame
-- `gtag <name>` → tag
-- `gcp <hash>` → cherry-pick
-- `grv <hash>` → revert
-- `gsh <ref>` → show
-- `grh <ref>` → reset HEAD
-- `grhh` → reset --hard HEAD
-- `gcn` → clean -fd
-- `gf` → fetch
-- `gfa` → fetch all
-- `gpsu <branch>` → push -u origin
-
-### npm (15) · pnpm (7) · yarn (5) · bun (5)
-- `ni` → `npm install`
-- `nid <pkg>` → `npm install <pkg>`
-- `nidd <pkg>` → `npm install -D`
-- `nig <pkg>` → `npm install -g`
-- `nun <pkg>` → `npm uninstall`
-- `nr <script>` → `npm run`
-- `nu` → `npm update`
-- `nc` → `npm ci`
-- `nls` → `npm ls --depth=0`
-- `no` → `npm outdated`
-- `na` → `npm audit`
-- `naf` → `npm audit fix`
-- `np` → `npm publish`
-- `npx <cmd>` → `npx`
-- `nd <file>` → `node`
-- `pni` → `pnpm install`
-- `pna <pkg>` → `pnpm add`
-- `pnad <pkg>` → `pnpm add -D`
-- `pnr <script>` → `pnpm run`
-- `pnx <cmd>` → `pnpm exec`
-- `pnu` → `pnpm update`
-- `pnls` → `pnpm ls`
-- `yi` → `yarn install`
-- `ya <pkg>` → `yarn add`
-- `yad <pkg>` → `yarn add -D`
-- `yr <script>` → `yarn run`
-- `yu` → `yarn upgrade`
-- `bi` → `bun install`
-- `ba <pkg>` → `bun add`
-- `bad <pkg>` → `bun add -d`
-- `br <script>` → `bun run`
-- `bx <cmd>` → `bunx`
-
-### Smart Lifecycle (auto-detects package manager)
-- `dev` → start dev server
-- `b` → build
-- `lint` → run linter
-- `fix` → lint --fix
-- `fmt` → format
-- `tu` → unit tests
-- `tc` → test coverage
-- `check` → lint + types + test
-
-### Next.js (5)
-- `nxa <name>` → `npx create-next-app@latest`
-- `nxd` → `next dev`
-- `nxb` → `next build`
-- `nxs` → `next start`
-- `nxl` → `next lint`
-
-### Vite (4)
-- `via <name>` → `npm create vite@latest`
-- `vid` → `vite`
-- `vib` → `vite build`
-- `vip` → `vite preview`
-
-### Angular (6)
-- `nga <name>` → `npx @angular/cli new`
-- `ngs` → `ng serve`
-- `ngb` → `ng build`
-- `ngt` → `ng test`
-- `ngg <type>` → `ng generate`
-- `ngc <name>` → `ng generate component`
-
-### Supabase (8)
-- `sbi` → `supabase init`
-- `sbs` → `supabase start`
-- `sbst` → `supabase stop`
-- `sbp` → `supabase db push`
-- `sbr` → `supabase db reset`
-- `sbm <name>` → `supabase migration new`
-- `sbt` → `supabase gen types typescript --local`
-- `sbf <name>` → `supabase functions serve`
-
-### Prisma (6)
-- `pri` → `npx prisma init`
-- `prg` → `npx prisma generate`
-- `prp` → `npx prisma db push`
-- `prm <name>` → `npx prisma migrate dev --name`
-- `prs` → `npx prisma studio`
-- `prd` → `npx prisma db seed`
-
-### Astro (4)
-- `asa <name>` → `npm create astro@latest`
-- `asd` → `astro dev`
-- `asb` → `astro build`
-- `asp` → `astro preview`
-
-### Expo / React Native (4)
-- `exa <name>` → `npx create-expo-app@latest`
-- `exs` → `expo start`
-- `exd` → `expo start --dev-client`
-- `exi <pkg>` → `expo install`
-
-### Tailwind / Drizzle (3)
-- `twi` → `npx tailwindcss init`
-- `dri` → `npx drizzle-kit generate`
-- `drp` → `npx drizzle-kit push`
-
-### Python (16)
-- `py` / `py2` / `pi` / `pir` / `pf` / `pfr` / `pun` / `venv` / `act` / `pt` / `ptv` / `ptc` / `dj` / `drs` / `dmm` / `dm`
-
-### Rust (10) · Go (7)
-- `cb` / `cbr` / `cr` / `crr` / `ct` / `cc` / `ccl` / `cf` / `cdoc` / `cadd`
-- `gor` / `gob` / `got` / `gotc` / `gof` / `gomod` / `gog`
-
-### Docker (18)
-- `dc` / `dcu` / `dcd` / `dcl` / `dcr` / `dcb` / `dps` / `dpa` / `di` / `dex` / `dlog` / `drm` / `drmi` / `dpr` / `db` / `drun` / `dstop` / `dvol`
-
-### Kubernetes (21)
-- `k` / `kgp` / `kga` / `kgs` / `kgd` / `kgn` / `kgi` / `kgns` / `kd` / `kl` / `kex` / `kaf` / `kdf` / `kns` / `kctx` / `ksc` / `kpf` / `ktp` / `ktn` / `kroll` / `krs`
-
-### Terraform (11)
-- `tf` / `tfi` / `tfp` / `tfa` / `tfaa` / `tfd` / `tfs` / `tff` / `tfv` / `tfo` / `tfw`
-
-### Networking (10)
-- `cur` / `curj` / `curp` / `curf` / `wgt` / `ping` / `port` / `myip` / `dns` / `ssl`
-
-### Deploy (6)
-- `vdep` / `vprod` / `ndep` / `fdep` / `sdep` / `rup`
-
-### System (20+)
-- `cls` / `la` / `lt` / `ll` / `up` / `up2` / `up3` / `mk` / `hist` / `path` / `env` / `evar` / `src` / `tgz` / `untgz` / `zipc` / `unzipc` / `sshi` / `scpu` / `scpd`
+### File Ops (20): `h` `t` `l` `v` `e` `w` `a` `x` `i` `d` `cp` `mv` `cat` `touch` `wc` `sz` `ch` `ln` `hd` `md5`
+### Search (13): `sf` `sg` `sl` `si` `sc` `sr` `rg` `rgf` `rgc` `todo` `sft` `sfe` `sfs`
+### Git (42): `gs` `ga` `gaf` `gc` `gca` `gp` `gpf` `gpl` `gpr` `gd` `gds` `gdf` `gco` `gcb` `gb` `gba` `gbd` `gbD` `gl` `glg` `gla` `grl` `gst` `gstp` `gstl` `grs` `grss` `gra` `gm` `grb` `grbi` `gcl` `gbl` `gtag` `gcp` `grv` `gsh` `grh` `grhh` `gcn` `gf` `gfa` `gpsu`
+### npm (15): `ni` `nid` `nidd` `nig` `nun` `nr` `nu` `nc` `nls` `no` `na` `naf` `np` `npx` `nd`
+### pnpm (7): `pni` `pna` `pnad` `pnr` `pnx` `pnu` `pnls`
+### yarn (5): `yi` `ya` `yad` `yr` `yu`
+### bun (5): `bi` `ba` `bad` `br` `bx`
+### Lifecycle (8): `dev` `b` `lint` `fix` `fmt` `tu` `tc` `check`
+### Next.js (5): `nxa` `nxd` `nxb` `nxs` `nxl`
+### Vite (4): `via` `vid` `vib` `vip`
+### Angular (6): `nga` `ngs` `ngb` `ngt` `ngg` `ngc`
+### Vue (3): `vua` `vud` `vub`
+### Svelte (3): `sva` `svd` `svb`
+### Nuxt (3): `nua` `nud` `nub`
+### Remix (3): `rma` `rmd` `rmb`
+### T3/Turbo (4): `t3a` `trb` `trd` `trl`
+### Supabase (8): `sbi` `sbs` `sbst` `sbp` `sbr` `sbm` `sbt` `sbf`
+### Prisma (6): `pri` `prg` `prp` `prm` `prs` `prd`
+### Astro (4): `asa` `asd` `asb` `asp`
+### Expo (4): `exa` `exs` `exd` `exi`
+### TypeScript (3): `tsc` `tscw` `tscn`
+### Vitest (4): `vit` `vitr` `vitw` `vitc`
+### Playwright (4): `pwr` `pwri` `pwrc` `pwrs`
+### ESLint (2): `esl` `eslf`
+### Prettier (2): `prt` `prtc`
+### Biome (2): `bml` `bmf`
+### Storybook (2): `sbd` `sbb`
+### Wrangler (2): `wrd` `wrp`
+### Tailwind/Drizzle (3): `twi` `dri` `drp`
+### Python (16): `py` `py2` `pi` `pir` `pf` `pfr` `pun` `venv` `act` `pt` `ptv` `ptc` `dj` `drs` `dmm` `dm`
+### Rust (10): `cb` `cbr` `cr` `crr` `ct` `cc` `ccl` `cf` `cdoc` `cadd`
+### Go (7): `gor` `gob` `got` `gotc` `gof` `gomod` `gog`
+### Docker (18): `dc` `dcu` `dcd` `dcl` `dcr` `dcb` `dps` `dpa` `di` `dex` `dlog` `drm` `drmi` `dpr` `db` `drun` `dstop` `dvol`
+### K8s (21): `k` `kgp` `kga` `kgs` `kgd` `kgn` `kgi` `kgns` `kd` `kl` `kex` `kaf` `kdf` `kns` `kctx` `ksc` `kpf` `ktp` `ktn` `kroll` `krs`
+### Terraform (11): `tf` `tfi` `tfp` `tfa` `tfaa` `tfd` `tfs` `tff` `tfv` `tfo` `tfw`
+### Network (10): `cur` `curj` `curp` `curf` `wgt` `ping` `port` `myip` `dns` `ssl`
+### Deploy (6): `vdep` `vprod` `ndep` `fdep` `sdep` `rup`
+### System (20+): `cls` `la` `lt` `ll` `up` `up2` `up3` `mk` `hist` `path` `env` `evar` `src` `tgz` `untgz` `zipc` `unzipc` `sshi` `scpu` `scpd`

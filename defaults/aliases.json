@@ -306,5 +306,55 @@
 
   "twi": "npx tailwindcss init",
   "dri": "npx drizzle-kit generate",
-  "drp": "npx drizzle-kit push"
+  "drp": "npx drizzle-kit push",
+
+  "vua": "npm create vue@latest {{1}}",
+  "vud": "vue-cli-service serve",
+  "vub": "vue-cli-service build",
+
+  "sva": "npm create svelte@latest {{1}}",
+  "svd": "svelte-kit dev",
+  "svb": "svelte-kit build",
+
+  "nua": "npx nuxi init {{1}}",
+  "nud": "nuxi dev",
+  "nub": "nuxi build",
+
+  "rma": "npx create-remix@latest {{1}}",
+  "rmd": "remix dev",
+  "rmb": "remix build",
+
+  "t3a": "npm create t3-app@latest {{1}}",
+  "trb": "npx turbo run build",
+  "trd": "npx turbo run dev",
+  "trl": "npx turbo run lint",
+
+  "tsc": "npx tsc",
+  "tscw": "npx tsc --watch",
+  "tscn": "npx tsc --noEmit",
+
+  "vit": "npx vitest",
+  "vitr": "npx vitest run",
+  "vitw": "npx vitest --watch",
+  "vitc": "npx vitest run --coverage",
+
+  "pwr": "npx playwright test",
+  "pwri": "npx playwright install",
+  "pwrc": "npx playwright codegen {{1}}",
+  "pwrs": "npx playwright show-report",
+
+  "bml": "npx @biomejs/biome check .",
+  "bmf": "npx @biomejs/biome format --write .",
+
+  "esl": "npx eslint .",
+  "eslf": "npx eslint . --fix",
+
+  "prt": "npx prettier . --write",
+  "prtc": "npx prettier . --check",
+
+  "sbd": "storybook dev -p 6006",
+  "sbb": "storybook build",
+
+  "wrd": "wrangler dev",
+  "wrp": "wrangler deploy"
 }
