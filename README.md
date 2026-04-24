@@ -1,6 +1,6 @@
 # sped-cli
 
-> **319 token-efficient shell aliases for AI coding agents and developers.** One install, every command works standalone — no prefix needed.
+> **324 token-efficient shell aliases for AI coding agents and developers.** One install, every command works standalone — no prefix needed.
 
 [![npm version](https://img.shields.io/npm/v/@electrooo69/sped-cli)](https://www.npmjs.com/package/@electrooo69/sped-cli)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -18,7 +18,7 @@ sped setup --all
 Then paste this **universal prompt** into any AI agent (Codex, Claude, Cursor, Copilot, Gemini, etc.):
 
 ```
-sped-cli is installed in this project. Read the ENTIRE .sped-cli/DOCS.md and .sped-cli/aliases.json files NOW — do NOT stop at 20 or 40 lines, read ALL of them. These contain 319 shell aliases you MUST use instead of long-form commands. For example: gs not git status, ni not npm install, nxa not npx create-next-app. If an alias fails, install sped-cli first: npm i -g @electrooo69/sped-cli@latest --force. If you cannot install, expand the alias manually but ALWAYS comment which alias you are expanding. Never silently use long-form commands.
+sped-cli is installed in this project. Read the ENTIRE .sped-cli/DOCS.md and .sped-cli/aliases.json files NOW — do NOT stop at 20 or 40 lines, read ALL of them. These contain 324 shell aliases you MUST use instead of long-form commands. For example: gs not git status, ni not npm install, nxa not npx create-next-app. If an alias fails, install sped-cli first: npm i -g @electrooo69/sped-cli@latest --force. If you cannot install, expand the alias manually but ALWAYS comment which alias you are expanding. Never silently use long-form commands.
 ```
 
 ---
@@ -37,7 +37,7 @@ Instead of `grep -rn TODO .`, it's `todo`.
 
 | Problem | How sped-cli solves it |
 |---------|----------------------|
-| AI agents waste tokens on long shell commands | 319 aliases, each 1-4 characters |
+| AI agents waste tokens on long shell commands | 324 aliases, each 1-4 characters |
 | Agents hallucinate wrong flags/syntax | Built-in commands with correct semantics |
 | Different projects use different package managers | Auto-detects npm/yarn/pnpm/bun |
 | Shell aliases don't survive across machines | One `npm install -g` and everything works |

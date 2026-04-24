@@ -162,7 +162,7 @@ async function execCommand(command, args, options = {}) {
     const child = spawn(command, args, {
       cwd: options.cwd,
       env: options.env,
-      shell: false,
+      shell: process.platform === "win32",
       stdio: options.stdio || "inherit",
       windowsHide: true
     });

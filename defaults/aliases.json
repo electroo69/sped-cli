@@ -77,6 +77,11 @@
   "gfa": "git fetch --all",
   "gpsu": "git push -u origin {{1}}",
   "gpr": "git pull --rebase",
+  "gi": "git init",
+  "gbm": "git branch -M {{1}}",
+  "grao": "git remote add origin {{1}}",
+  "ghu": "gh repo create {{1}} --private --source=. --remote=origin",
+  "ghup": "gh repo create {{1}} --public --source=. --remote=origin",
 
   "ni": "npm install",
   "nid": "npm install {{1}}",

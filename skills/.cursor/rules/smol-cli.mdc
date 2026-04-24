@@ -10,7 +10,7 @@
 
 **READ THE FULL `.sped-cli/aliases.json` FILE to look up any command you need.**
 **READ THE FULL `.sped-cli/DOCS.md` FILE for the complete alias→command reference table.**
-**DO NOT only read the first 20-40 lines. Read the ENTIRE files above for all 319 commands.**
+**DO NOT only read the first 20-40 lines. Read the ENTIRE files above for all 324 commands.**
 
 ## Most Used Aliases (memorize these)
 
@@ -39,7 +39,7 @@
 # Linting:     esl · eslf (fix) · bml (biome) · prt (prettier)
 ```
 
-## Full Reference (319 commands)
+## Full Reference (324 commands)
 
 **For the complete alias list, read `.sped-cli/aliases.json`.**
 

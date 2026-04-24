@@ -179,7 +179,7 @@ function setup() {
 
   console.log("");
   if (installed > 0) {
-    console.log(`  ✨ Installed ${installed} skill file(s). Your AI agents now know all 319 sped-cli commands.\n`);
+    console.log(`  ✨ Installed ${installed} skill file(s). Your AI agents now know all 324 sped-cli commands.\n`);
   } else if (skipped > 0) {
     console.log(`  No new files installed (${skipped} already exist). Use --force to overwrite.\n`);
   } else {
